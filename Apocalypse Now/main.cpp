@@ -1,11 +1,12 @@
-// A project by Bala Shanmugam M and Kasi Viswanathan M.
-//Copyrights 103 Studios 2017
+#include "Renderer.h"
 
-#include <iostream>
 
-using namespace std;
-int main()
+
+int main(int argc, char** argv)
 {
-	cout << "Hello world!" << endl;
+	Pong::Renderer game;
+	game.execute();
+	
+	system("PAUSE");
 	return 0;
 }
