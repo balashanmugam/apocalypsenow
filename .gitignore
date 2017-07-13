@@ -1,0 +1,10 @@
+############################
+#### VS generated files ####
+############################
+.db
+./Debug
+Debug/
+.vs/
+*.sln
+*.vcxproj
+*.filters
