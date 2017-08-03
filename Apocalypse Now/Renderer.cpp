@@ -1,15 +1,19 @@
 #include "Renderer.h"
 
-using namespace Pong;
+using namespace apocalypsenow;
+
+namespace apocalypsenow
+{
+	// global variables;
+	SDL_Renderer* g_renderer;
+	std::fstream errorfile;
+}
 
 
 //Constructor
 Renderer::Renderer()
 {
 	m_exit = false;
-	m_timerFont = nullptr;
-
-
 	errorfile.open("errorFile.txt");
 }
 
@@ -18,20 +22,21 @@ bool Renderer::init()
 {
 	bool success = true;
 
+
 	// Initializes SDL subsystem.
-	if (!SDL_Init(SDL_INIT_EVERYTHING))
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 	{
 		success = false;
 		errorfile << SDL_GetError();
 	}
-	
+
 	//Creates a Window where every other thing takes place.
 	m_window = SDL_CreateWindow("Apocalypse Now",
-								SDL_WINDOWPOS_CENTERED,
-								SDL_WINDOWPOS_CENTERED,
-								SCREEN_WIDTH,
-								SCREEN_HEIGHT,
-								SDL_WINDOW_SHOWN);
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		SCREEN_WIDTH,
+		SCREEN_HEIGHT,
+		SDL_WINDOW_SHOWN);
 
 	if (m_window == NULL)
 	{
@@ -39,34 +44,41 @@ bool Renderer::init()
 		errorfile << "Window creation failed " << std::endl;
 	}
 
-	//Creates a renderer using the pre created Windos.
-	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (m_renderer == NULL)
+	//Creates a renderer using the pre created Window
+	g_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	if (g_renderer == nullptr)
 	{
 		success = false;
-		errorfile << "Renderer creationg failed" << std::endl;
+		errorfile << "Renderer creation failed" << std::endl;
 	}
 
+	// Init the IMG subsystem.
+	int image_flags = IMG_INIT_PNG | IMG_INIT_JPG;
+	int image_inits = IMG_Init(image_flags);
+	
+	if (image_inits&image_flags != image_flags)
+	{
+		success = false;
+		errorfile << "Error in initialising image flags subsystem." << std::endl;
+		errorfile << IMG_GetError << std::endl;
+	}
+		
+
 	//Init the Font subsystem.
-	if (!TTF_Init())
+	if (TTF_Init() != 0)
 	{
 		success = false;
 		errorfile << "TTF subsytem loading failed." << std::endl;
+		errorfile << TTF_GetError() << std::endl;
 	}
-	// Load fonts
-	m_timerFont = TTF_OpenFont("Fonts/slkscr.ttf", 18);
-	if (m_timerFont == nullptr)
-	{
-		success = false;
-		errorfile << " Font loading Failed" << std::endl;
-	}
+
+
 	return success;
 }
 
 void Renderer::update()
 {
 	// handles input too!
-	// Movement of the paddles.
 }
 
 // Renders all the important textures and stuffs.
@@ -74,15 +86,22 @@ void Renderer::render()
 {
 	
 	//Clears the screen
-	SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
-	SDL_RenderClear(m_renderer);
+	SDL_SetRenderDrawColor(g_renderer, 0, 0, 0, 255);
+	SDL_RenderClear(g_renderer);
 
-
+	test();
 
 	//Updates the screen.
-	SDL_RenderPresent(m_renderer);
+	SDL_RenderPresent(g_renderer);
 }
 
+void Renderer::test()
+{
+	Texture t;
+	t.loadTexture("resources/images/test_joey.jpg");
+	t.render(0, 0);
+	t.free();
+}
 
 // Will handle close and keyboard press events.
 void Renderer::handleEvents()
@@ -105,7 +124,7 @@ Renderer::~Renderer()
 	SDL_DestroyWindow(m_window);
 	
 	m_window = NULL;
-	m_renderer = NULL;
+	g_renderer = NULL;
 }
 
 bool Renderer::getExit() const

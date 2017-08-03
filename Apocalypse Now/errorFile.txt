@@ -1,0 +1,2 @@
+Loading Texture: Failed to create texture from surface. 
+Invalid renderer

@@ -7,17 +7,23 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include "Texture.h"
+#include <SDL_image.h>
 
 
 
 // This class will load all the necessary things required for the game.
 // Also, this class will contain the GAME LOOP
-namespace Pong {
-	static std::fstream errorfile;
-	class Paddle;
-	class Timer;
+namespace apocalypsenow {
+
+	extern SDL_Renderer* g_renderer;
+	extern std::fstream errorfile;
+	// Screens constants
 	const int SCREEN_WIDTH = 640;
 	const int SCREEN_HEIGHT = 480;
+
+	// Level Constants
+	const int LEVEL_WIDTH = 1280;
+	const int LEVEL_HEIGHT = 960;
 
 	class Renderer
 	{
@@ -27,14 +33,7 @@ namespace Pong {
 		SDL_Event m_event;
 	
 		SDL_Window* m_window;
-		SDL_Renderer* m_renderer;
-		
-		TTF_Font* m_timerFont;
-
-		//Paddles to play.
-		Paddle* player1;
-		Paddle* player2;
-		
+				
 		// if this flag is set to true, the game has ended.
 		bool m_exit;
 	
@@ -50,6 +49,11 @@ namespace Pong {
 		bool init();
 
 		void update();
+
+
+		// test function.
+		void test();
+
 
 		void render();
 

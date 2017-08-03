@@ -4,8 +4,11 @@
 
 #include "Renderer.h"
 
-namespace Pong {
-	
+namespace apocalypsenow {
+
+	extern SDL_Renderer* g_renderer;
+	extern std::fstream errorfile;
+
 	class Texture
 	{
 	private:
@@ -19,11 +22,28 @@ namespace Pong {
 	public:
 		Texture();
 		~Texture();
+		
+
+
+		// Clears all the memebers.
+		void free();
+
+		// Getters and setters
+
+		int getWidth() const;
+		int getHeight() const;
 
 		// Creates a texture of the "Text" and "Text color"
-		bool loadFontTexture(SDL_Renderer* renderer,TTF_Font* t_font,std::string text, SDL_Color textColor);
+		bool loadFontTexture(TTF_Font* t_font,std::string text, SDL_Color textColor);
 
-		void render(SDL_Renderer* t_renderer, int t_x, int t_y,SDL_Rect* clipper = nullptr);
+		// Load texture from the file of the given path.
+		bool loadTexture(std::string t_imagepath);	
+		
+		// Edit the colors of the texture.
+		void setColor(SDL_Color t_color);
+
+
+		void render(int t_x, int t_y,SDL_Rect* clipper = nullptr);
 
 	};
 }
