@@ -1,0 +1,46 @@
+#pragma once
+#ifndef _TILE_H_
+#define _TILE_H_
+#include "Renderer.h"
+namespace apocalypsenow
+{
+	bool checkCollision(SDL_Rect a, SDL_Rect b);
+
+	// Global constant for tiles.
+	const int TILE_WIDTH = 80;
+	const int TILE_HEIGHT = 80;
+	const int TILE_TYPES = 12;
+	const int TILE_TOTAL = 192;
+
+	// These tiles are only for testing purposes.
+	const int TILE_RED = 0;
+	const int TILE_GREEN = 1;
+	const int TILE_BLUE = 2;
+	const int TILE_MID = 3;
+	const int TILE_TOP = 4;
+	const int TILE_TOPRIGHT = 5;
+	const int TILE_RIGHT = 6;
+	const int TILE_BOTRIGHT = 7;
+	const int TILE_BOT = 8;
+	const int TILE_BOTLEFT = 9;
+	const int TILE_LEFT = 10;
+	const int TILE_TOPLEFT = 11;
+
+	class Tile
+	{
+	private:
+		SDL_Rect m_box;
+		int m_type;
+
+	public:
+		Tile(int t_x, int t_y,int t_tiletype);
+
+		void render(SDL_Rect& t_camera);
+		
+	};
+
+
+}
+
+
+#endif

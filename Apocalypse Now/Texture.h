@@ -4,7 +4,8 @@
 
 #include "Renderer.h"
 
-namespace apocalypsenow {
+namespace apocalypsenow 
+{
 
 	extern SDL_Renderer* g_renderer;
 	extern std::fstream errorfile;

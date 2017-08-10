@@ -8,6 +8,7 @@
 #include <SDL_ttf.h>
 #include "Texture.h"
 #include <SDL_image.h>
+#include "Tile.h"
 
 
 
@@ -17,6 +18,9 @@ namespace apocalypsenow {
 
 	extern SDL_Renderer* g_renderer;
 	extern std::fstream errorfile;
+	extern std::ifstream test;
+	
+	
 	// Screens constants
 	const int SCREEN_WIDTH = 640;
 	const int SCREEN_HEIGHT = 480;
@@ -53,6 +57,10 @@ namespace apocalypsenow {
 
 		// test function.
 		void test();
+
+		void test_loadLevel();
+
+		void test_displaylevel();
 
 
 		void render();

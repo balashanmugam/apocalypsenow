@@ -5,8 +5,6 @@ using namespace apocalypsenow;
 
 Texture::Texture()
 {
-
-	errorfile.open("errorFile.txt");
 	m_texture = nullptr;
 }
 
