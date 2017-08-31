@@ -26,6 +26,16 @@ void apocalypsenow::Tile::render(SDL_Rect& t_camera)
 	}
 }
 
+int apocalypsenow::Tile::getType()
+{
+	return m_type;
+}
+
+SDL_Rect apocalypsenow::Tile::getBox()
+{
+	return m_box;
+}
+
 bool apocalypsenow::checkCollision(SDL_Rect t_a, SDL_Rect t_b)
 {
 	int leftA, leftB;

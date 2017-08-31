@@ -23,8 +23,8 @@ namespace apocalypsenow
 	public:
 		Texture();
 		~Texture();
-		
 
+		SDL_Texture* getTexture();
 
 		// Clears all the memebers.
 		void free();

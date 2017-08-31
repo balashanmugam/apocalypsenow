@@ -1,13 +1,16 @@
 #include "Texture.h"
 
-using namespace apocalypsenow;
 
 
-Texture::Texture()
+apocalypsenow::Texture::Texture()
 {
 	m_texture = nullptr;
 }
 
+SDL_Texture* apocalypsenow::Texture::getTexture()
+{
+	return m_texture;
+}
 int apocalypsenow::Texture::getWidth() const
 {
 	return m_width;
@@ -18,7 +21,7 @@ int apocalypsenow::Texture::getHeight() const
 	return m_height;
 }
 
-bool Texture::loadFontTexture(TTF_Font* t_font,std::string text, SDL_Color textColor)
+bool apocalypsenow::Texture::loadFontTexture(TTF_Font* t_font,std::string text, SDL_Color textColor)
 {
 	bool success = true;
 
@@ -104,7 +107,7 @@ void apocalypsenow::Texture::setColor(SDL_Color t_color)
 
 
 
-void Texture::render(int t_x, int t_y,SDL_Rect* clipper)
+void apocalypsenow::Texture::render(int t_x, int t_y,SDL_Rect* clipper)
 {
 	SDL_Rect renderQuad{
 		t_x,
@@ -123,7 +126,7 @@ void Texture::render(int t_x, int t_y,SDL_Rect* clipper)
 
 }
 
-Texture::~Texture()
+apocalypsenow::Texture::~Texture()
 {
 	// Destructor code.
 }

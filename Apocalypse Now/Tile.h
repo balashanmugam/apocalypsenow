@@ -7,12 +7,14 @@ namespace apocalypsenow
 	bool checkCollision(SDL_Rect a, SDL_Rect b);
 
 	// Global constant for tiles.
+
 	const int TILE_WIDTH = 80;
 	const int TILE_HEIGHT = 80;
 	const int TILE_TYPES = 12;
 	const int TILE_TOTAL = 192;
 
 	// These tiles are only for testing purposes.
+
 	const int TILE_RED = 0;
 	const int TILE_GREEN = 1;
 	const int TILE_BLUE = 2;
@@ -33,10 +35,17 @@ namespace apocalypsenow
 		int m_type;
 
 	public:
+		// initalizs the tile
 		Tile(int t_x, int t_y,int t_tiletype);
 
+		// renders the tile to the screen
 		void render(SDL_Rect& t_camera);
 		
+		// return the tile type.
+		int getType();
+
+		// return the SDL_box
+		SDL_Rect getBox();
 	};
 
 

@@ -5,25 +5,30 @@
 #include <iostream>
 #include <fstream>
 #include <SDL.h>
-#include <SDL_ttf.h>
-#include "Texture.h"
 #include <SDL_image.h>
+#include <SDL_ttf.h>
+
+
+#include "Texture.h"
 #include "Tile.h"
-
-
+#include "Timer.h"
+#include "Protagonist.h"
 
 // This class will load all the necessary things required for the game.
 // Also, this class will contain the GAME LOOP
 namespace apocalypsenow {
 
+
 	extern SDL_Renderer* g_renderer;
 	extern std::fstream errorfile;
 	extern std::ifstream test;
-	
-	
+
 	// Screens constants
 	const int SCREEN_WIDTH = 640;
 	const int SCREEN_HEIGHT = 480;
+
+	const int SCREEN_FPS = 60;
+	const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 
 	// Level Constants
 	const int LEVEL_WIDTH = 1280;
@@ -40,6 +45,8 @@ namespace apocalypsenow {
 				
 		// if this flag is set to true, the game has ended.
 		bool m_exit;
+
+		//Protagonist hero;
 	
 	public:
 
@@ -55,13 +62,15 @@ namespace apocalypsenow {
 		void update();
 
 
+
+
 		// test function.
-		void test();
 
 		void test_loadLevel();
 
 		void test_displaylevel();
-
+		// Refreshed the sprites of the level.
+		void refreshLevel();
 
 		void render();
 
@@ -73,6 +82,8 @@ namespace apocalypsenow {
 
 		//Execute init, update and render.
 		void execute();
+
+		void cleanup();
 	
 	};
 

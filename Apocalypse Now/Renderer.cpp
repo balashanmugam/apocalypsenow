@@ -1,25 +1,40 @@
 #include "Renderer.h"
 
-using namespace apocalypsenow;
-
 namespace apocalypsenow
 {
+
+	// Global timer
+	Timer timeelapsed;
+
+	// Test protagonist
+	Protagonist hero;
 	// global variables;
 	Texture g_tileTexture;
 	SDL_Rect g_tileClip[TILE_TYPES];
 	SDL_Renderer* g_renderer;
 	std::fstream errorfile;
+	Texture g_protagonistTexture;
+	SDL_Rect g_camera = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
+
+
+	// Protagonist Sprites clips
+	SDL_Rect g_protagonistClips[PROT_TOTAL_FRAMES];
+
+	Tile* tiles[TILE_TOTAL];
+
+
+
 
 }
 //Constructor
-Renderer::Renderer()
+apocalypsenow::Renderer::Renderer()
 {
 	m_exit = false;
-	errorfile.open("errorFile.txt");
+	apocalypsenow::errorfile.open("errorFile.txt");
 }
 
-// Loads the subsystems, creates window, renderer ...
-bool Renderer::init()
+// Loads the subsystems, creates window, apocalypsenow::Renderer ...
+bool apocalypsenow::Renderer::init()
 {
 	bool success = true;
 
@@ -45,12 +60,12 @@ bool Renderer::init()
 		errorfile << "Window creation failed " << std::endl;
 	}
 
-	//Creates a renderer using the pre created Window
+	//Creates a apocalypsenow::Renderer using the pre created Window
 	g_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (g_renderer == nullptr)
 	{
 		success = false;
-		errorfile << "Renderer creation failed" << std::endl;
+		errorfile << "apocalypsenow::Renderer creation failed" << std::endl;
 	}
 
 	// Init the IMG subsystem.
@@ -73,49 +88,43 @@ bool Renderer::init()
 		errorfile << TTF_GetError() << std::endl;
 	}
 
+	//Clears the screen
+	SDL_SetRenderDrawColor(g_renderer, 255,255, 255, 255);
+	SDL_RenderClear(g_renderer);
+
+
+	test_loadLevel();
 
 	return success;
 }
 
-void Renderer::update()
+void apocalypsenow::Renderer::update()
 {
 	// handles input too!
 }
 
-// Renders all the important textures and stuffs.
-void Renderer::render()
-{
-	
-	//Clears the screen
-	SDL_SetRenderDrawColor(g_renderer, 0, 0, 0, 255);
-	SDL_RenderClear(g_renderer);
 
-	test();
-	test_loadLevel();
-
-	//Updates the screen.
-	SDL_RenderPresent(g_renderer);
-}
-
-void Renderer::test()
-{
-	Texture t;
-	t.loadTexture("resources/images/test/test_joey.jpg");
-	t.render(t.getWidth()/4, t.getHeight()/4);
-	t.free();
-	SDL_RenderClear(g_renderer);
-
-
-}
-
-void Renderer::test_loadLevel()
+void apocalypsenow::Renderer::test_loadLevel()
 {
 	if (!g_tileTexture.loadTexture("resources/images/test/test_tiles.png"))
 		errorfile << "Fail in loading test tile" << std::endl;
 
+	if (!g_protagonistTexture.loadTexture("resources/images/test/test_Spriteleft.png"))
+		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
+
+	// Clipping each frame
+	for (auto i = 0; i < PROT_TOTAL_FRAMES; i++)
+	{
+		g_protagonistClips[i].x = i * PROT_WIDTH;
+		g_protagonistClips[i].y = 0;
+		g_protagonistClips[i].h = PROT_HEIGHT;
+		g_protagonistClips[i].w = PROT_WIDTH;
+
+	}
+
 	std::ifstream testmap("test.map");
 	
-	Tile* tiles[TILE_TOTAL];
+	//Tile* tiles[TILE_TOTAL];
 	int x = 0;
 	int y = 0;
 
@@ -217,22 +226,34 @@ void Renderer::test_loadLevel()
 
 	testmap.close();
 
-	SDL_Rect camera = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
-
+	//SDL_Rect camera = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
+	
 	for (auto i = 0; i < TILE_TOTAL; i++)
 	{
-		tiles[i]->render(camera);
+		tiles[i]->render(g_camera);
 	}
 
+	SDL_RenderPresent(g_renderer);
+
 }
-void Renderer::test_displaylevel()
+void apocalypsenow::Renderer::test_displaylevel()
 {
 
 
 }
 
+void apocalypsenow::Renderer::refreshLevel()
+{
+	for (auto i = 0; i < TILE_TOTAL; i++)
+	{
+		tiles[i]->render(g_camera);
+	}
+
+	//SDL_RenderPresent(g_renderer);
+}
+
 // Will handle close and keyboard press events.
-void Renderer::handleEvents()
+void apocalypsenow::Renderer::handleEvents()
 {
 	while (SDL_PollEvent(&m_event))
 	{
@@ -240,14 +261,21 @@ void Renderer::handleEvents()
 		{
 			//exits.
 			m_exit = true;
+			
 		}
+		// hero.
+		hero.handleEvents(m_event);
 	}
 
 	
 }
 
+void apocalypsenow::Renderer::cleanup()
+{
+	errorfile.close();
 
-Renderer::~Renderer()
+}
+apocalypsenow::Renderer::~Renderer()
 {
 	SDL_DestroyWindow(m_window);
 	
@@ -255,18 +283,33 @@ Renderer::~Renderer()
 	g_renderer = NULL;
 }
 
-bool Renderer::getExit() const
+bool apocalypsenow::Renderer::getExit() const
 {
 	return m_exit;
 }
 
-void Renderer::execute()
+// Renders all the important textures and stuffs.
+void apocalypsenow::Renderer::render()
+{
+	
+}
+
+void apocalypsenow::Renderer::execute()
 {
 	init();
+	
 	while (this->getExit() != true)
 	{
-		render();
-		update();
 		handleEvents();
-	}
+		hero.move(tiles);
+		hero.setCamera(g_camera);
+
+		hero.render(g_camera);
+		refreshLevel();
+	} 
+	cleanup();
 }
+
+
+
+
