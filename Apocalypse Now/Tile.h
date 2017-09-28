@@ -10,7 +10,7 @@ namespace apocalypsenow
 
 	const int TILE_WIDTH = 80;
 	const int TILE_HEIGHT = 80;
-	const int TILE_TYPES = 12;
+	const int TILE_TYPES = 10;
 	const int TILE_TOTAL = 192;
 
 	// These tiles are only for testing purposes.
@@ -18,16 +18,18 @@ namespace apocalypsenow
 	const int TILE_RED = 0;
 	const int TILE_GREEN = 1;
 	const int TILE_BLUE = 2;
-	const int TILE_MID = 3;
-	const int TILE_TOP = 4;
-	const int TILE_TOPRIGHT = 5;
-	const int TILE_RIGHT = 6;
-	const int TILE_BOTRIGHT = 7;
-	const int TILE_BOT = 8;
-	const int TILE_BOTLEFT = 9;
-	const int TILE_LEFT = 10;
-	const int TILE_TOPLEFT = 11;
 
+
+	const int TILE_TOPLEFT = 0;
+	const int TILE_LEFT = 1;
+	const int TILE_BOTLEFT = 2;
+	const int TILE_TOP = 3;
+	const int TILE_MID = 4;
+	const int TILE_BOT = 5;
+	const int TILE_TOPRIGHT = 6;
+	const int TILE_RIGHT = 7;
+	const int TILE_BOTRIGHT = 8;
+	const int TILE_BLOCK = 99;
 	class Tile
 	{
 	private:

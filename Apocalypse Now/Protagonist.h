@@ -11,22 +11,27 @@ namespace apocalypsenow {
 	class Texture;
 	class Tile;
 
-	extern Texture g_protagonistTexture;
-	extern SDL_Rect g_protagonistClips[];
+
 	//bool touchesWall(SDL_Rect box, Tile* tiles[]);
 
-	const int PROT_WALK_LEFT = 0;
+	const int PROT_WALK_TOP = 0;
 	const int PROT_WALK_BOT = 1;
-	const int PROT_WALK_RIGHT = 2;
-	const int PROT_WALK_TOP = 3;
+	const int PROT_WALK_LEFT = 2;
+	const int PROT_WALK_RIGHT = 3;
+	
+	const int PROT_WALKING_DIRECTION = 4;
 
 	const int PROT_TOTAL_FRAMES = 10;
 
 	const int PROT_WIDTH = 60;
 	const int PROT_HEIGHT = 60;
 
+	extern Texture g_protagonistTextureTop;
+	extern Texture g_protagonistTextureBot;
+	extern Texture g_protagonistTextureLeft;
+	extern Texture g_protagonistTextureRight;
+	extern SDL_Rect g_protagonistClips[PROT_WALKING_DIRECTION][PROT_TOTAL_FRAMES];
 
-	
 	// PROT aka Protagonist.
 	class Protagonist
 	{
@@ -39,16 +44,21 @@ namespace apocalypsenow {
 		// current frame
 		int m_frame;
 
+		//Walking direction.
+		int m_direction;
+
 		SDL_Rect m_box;
 
 
 	public:
-		static const int PROT_WIDTH = 60;
-		static const int PROT_HEIGHT = 60;
+		static const int PROT_WIDTH = 50;
+		static const int PROT_HEIGHT = 50;
 
 		static const int PROT_SPEED = 2;
 
 		Protagonist();
+
+		Protagonist(int t_x, int tx_y);
 
 		//Handle events 
 		void handleEvents(SDL_Event& e);
@@ -61,10 +71,14 @@ namespace apocalypsenow {
 		// sets the camera to the protagonist
 		void setCamera(SDL_Rect& camera);
 
-
 		// renders the protagonist to the screen.]// currently this is done in the renderer.cpp
-		 // TODO : Please change it to render here later. if possible.
 		void render(SDL_Rect& camera);
+	
+		int getDirection()
+		{
+			return m_direction;
+		}
+	
 	};
 }
 

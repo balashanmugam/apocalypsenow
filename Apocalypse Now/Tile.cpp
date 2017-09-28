@@ -5,6 +5,8 @@ namespace apocalypsenow
 {
 	extern Texture g_tileTexture;
 	extern SDL_Rect g_tileClip[TILE_TYPES];
+	extern SDL_Rect g_blockTileClip;
+	extern Texture g_blockTileTexture;
 }
 apocalypsenow::Tile::Tile(int t_x, int t_y, int t_tileType)
 {
@@ -23,6 +25,9 @@ void apocalypsenow::Tile::render(SDL_Rect& t_camera)
 	if (checkCollision(t_camera, m_box) == true)
 	{
 		g_tileTexture.render(m_box.x - t_camera.x, m_box.y - t_camera.y, &g_tileClip[m_type]);
+
+		if(m_type == TILE_BLOCK)
+			g_blockTileTexture.render(m_box.x - t_camera.x, m_box.y - t_camera.y, &g_blockTileClip);
 	}
 }
 
@@ -38,6 +43,7 @@ SDL_Rect apocalypsenow::Tile::getBox()
 
 bool apocalypsenow::checkCollision(SDL_Rect t_a, SDL_Rect t_b)
 {
+
 	int leftA, leftB;
 	int rightA, rightB;
 	int topA, topB;
@@ -60,6 +66,10 @@ bool apocalypsenow::checkCollision(SDL_Rect t_a, SDL_Rect t_b)
 	{
 		return false;
 	}
+	if (topA >= botB)
+	{
+		return false;
+	}
 	if (rightA <= leftB)
 	{
 		return false;
@@ -68,11 +78,6 @@ bool apocalypsenow::checkCollision(SDL_Rect t_a, SDL_Rect t_b)
 	{
 		return false;
 	}
-	if (topA >= botA)
-	{
-		return false;
-	}
-
 	return true;
 	
 }

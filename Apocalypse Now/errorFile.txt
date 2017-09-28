@@ -1,1685 +1,956 @@
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
-Current frame :85
-Current frame :86
-Current frame :87
-Current frame :88
-Current frame :89
-Current frame :90
-Current frame :91
-Current frame :92
-Current frame :93
-Current frame :94
-Current frame :95
-Current frame :96
-Current frame :97
-Current frame :98
-Current frame :99
-Current frame :0
-Current frame :1
-Current frame :2
-Current frame :3
-Current frame :4
-Current frame :5
-Current frame :6
-Current frame :7
-Current frame :8
-Current frame :9
-Current frame :10
-Current frame :11
-Current frame :12
-Current frame :13
-Current frame :14
-Current frame :15
-Current frame :16
-Current frame :17
-Current frame :18
-Current frame :19
-Current frame :20
-Current frame :21
-Current frame :22
-Current frame :23
-Current frame :24
-Current frame :25
-Current frame :26
-Current frame :27
-Current frame :28
-Current frame :29
-Current frame :30
-Current frame :31
-Current frame :32
-Current frame :33
-Current frame :34
-Current frame :35
-Current frame :36
-Current frame :37
-Current frame :38
-Current frame :39
-Current frame :40
-Current frame :41
-Current frame :42
-Current frame :43
-Current frame :44
-Current frame :45
-Current frame :46
-Current frame :47
-Current frame :48
-Current frame :49
-Current frame :50
-Current frame :51
-Current frame :52
-Current frame :53
-Current frame :54
-Current frame :55
-Current frame :56
-Current frame :57
-Current frame :58
-Current frame :59
-Current frame :60
-Current frame :61
-Current frame :62
-Current frame :63
-Current frame :64
-Current frame :65
-Current frame :66
-Current frame :67
-Current frame :68
-Current frame :69
-Current frame :70
-Current frame :71
-Current frame :72
-Current frame :73
-Current frame :74
-Current frame :75
-Current frame :76
-Current frame :77
-Current frame :78
-Current frame :79
-Current frame :80
-Current frame :81
-Current frame :82
-Current frame :83
-Current frame :84
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  638
+Collision : 99  552  672
+Collision : 99  552  672
+Collision : 99  550  672
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  498
+Collision : 99  638  398
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  396
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  342
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  638  256
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  590  192
+Collision : 99  588  192
+lision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  710
+Collision : 99  1038  708
+Collision : 99  1038  706
+Collision : 99  1038  704
+Collision : 99  1038  702
+Collision : 99  1038  700
+Collision : 99  1038  698
+Collision : 99  1038  696
+Collision : 99  1038  694
+Collision : 99  1038  692
+Collision : 99  1038  690
+Collision : 99  1038  688
+Collision : 99  1038  686
+Collision : 99  1038  684
+Collision : 99  1038  682
+Collision : 99  1038  680
+Collision : 99  1038  678
+Collision : 99  1038  676
+Collision : 99  1038  674
+Collision : 99  1038  672
+Collision : 99  1038  670
+Collision : 99  1038  668
+Collision : 99  1038  666
+Collision : 99  1038  664
+Collision : 99  1038  662
+Collision : 99  1038  660
+Collision : 99  1038  658
+Collision : 99  1038  656
+Collision : 99  1038  654
+Collision : 99  1038  652
+Collision : 99  1038  650
+Collision : 99  1038  648
+Collision : 99  1038  646
+Collision : 99  1038  644
+Collision : 99  1038  642
+Collision : 99  1038  640
+Collision : 99  1038  638
+Collision : 99  1038  636
+Collision : 99  1038  634
+Collision : 99  1038  632
+Collision : 99  1038  630
+Collision : 99  1038  628
+Collision : 99  1038  626
+Collision : 99  1038  624
+Collision : 99  1038  622
+Collision : 99  1038  620
+Collision : 99  1038  618
+Collision : 99  1038  616
+Collision : 99  1038  614
+Collision : 99  1038  612
+Collision : 99  1038  610
+Collision : 99  1038  608
+Collision : 99  1038  606
+Collision : 99  1038  604
+Collision : 99  1038  602
+Collision : 99  1038  600
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  226
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  362
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  202
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  638  186
+Collision : 99  600  182
+Collision : 99  600  182
+Collision : 99  600  182
+Collision : 99  600  182
+Collision : 99  600  182
+Collision : 99  600  182
+Collision : 99  576  182
+Collision : 99  576  182
+Collision : 99  576  182
+Collision : 99  576  182
+Collision : 99  576  182
+Collision : 99  576  182
+Collision : 99  576  182
+Collision : 99  576  182
+Collision : 99  576  182
+Collision : 99  576  182
+Collision : 99  576  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  520  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  504  182
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  502  262
+Collision : 99  500  502
+Collision : 99  500  502
+Collision : 99  500  502
+Collision : 99  500  502
+Collision : 99  500  502
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  500
+Collision : 99  318  118
+Collision : 99  318  116
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  114
+Collision : 99  318  112
+Collision : 99  318  110
+Collision : 99  318  108
+Collision : 99  318  106
+Collision : 99  318  104
+Collision : 99  318  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  234  102
+Collision : 99  232  102
+Collision : 99  230  102
+Collision : 99  228  102
+Collision : 99  226  102
+Collision : 99  224  102
+Collision : 99  192  102
+Collision : 99  190  102
+Collision : 99  188  102
+Collision : 99  186  102
+Collision : 99  184  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  102
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  158
+Collision : 99  182  160
+Collision : 99  182  162
+Collision : 99  182  164
+Collision : 99  182  166
+Collision : 99  182  168
+Collision : 99  182  170
+Collision : 99  182  172
+Collision : 99  182  174
+Collision : 99  182  176
+Collision : 99  182  178
+Collision : 99  182  180
+Collision : 99  182  182
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  142
+Collision : 99  182  102
+Collision : 99  636  450
+Collision : 99  636  450
+Collision : 99  636  450
+Collision : 99  638  452
+Collision : 99  638  454
+Collision : 99  638  456
+Collision : 99  638  458
+Collision : 99  638  460
+Collision : 99  638  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  636  668
+Collision : 99  638  668
+Collision : 99  638  668
+Collision : 99  638  638
+Collision : 99  536  638
+Collision : 99  538  638
+Collision : 99  540  638
+Collision : 99  542  638
+Collision : 99  544  638
+Collision : 99  546  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  548  638
+Collision : 99  550  638
+Collision : 99  552  638
+Collision : 99  554  638
+Collision : 99  556  638
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  586  662
+Collision : 99  584  662
+Collision : 99  504  900
+Collision : 99  504  900
+Collision : 99  504  900
+Collision : 99  504  900
+Collision : 99  504  900
+Collision : 99  504  900
+Collision : 99  502  900
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  638
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  636
+Collision : 99  500  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  638
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  636
+Collision : 99  476  638
+Collision : 99  476  638

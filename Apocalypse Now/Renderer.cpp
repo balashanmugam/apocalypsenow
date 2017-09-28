@@ -7,24 +7,29 @@ namespace apocalypsenow
 	Timer timeelapsed;
 
 	// Test protagonist
-	Protagonist hero;
+	Protagonist hero(640,640);
+
+	// Test Textures
+	Texture g_protagonistTextureTop;
+	Texture g_protagonistTextureBot;
+	Texture g_protagonistTextureLeft;
+	Texture g_protagonistTextureRight;
+
 	// global variables;
 	Texture g_tileTexture;
+	Texture g_blockTileTexture;
 	SDL_Rect g_tileClip[TILE_TYPES];
+	SDL_Rect g_blockTileClip;
 	SDL_Renderer* g_renderer;
 	std::fstream errorfile;
-	Texture g_protagonistTexture;
+
+	//Texture g_protagonistTexture;
 	SDL_Rect g_camera = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
 
-
 	// Protagonist Sprites clips
-	SDL_Rect g_protagonistClips[PROT_TOTAL_FRAMES];
+	SDL_Rect g_protagonistClips[PROT_WALKING_DIRECTION][PROT_TOTAL_FRAMES];
 
 	Tile* tiles[TILE_TOTAL];
-
-
-
-
 }
 //Constructor
 apocalypsenow::Renderer::Renderer()
@@ -53,6 +58,7 @@ bool apocalypsenow::Renderer::init()
 		SCREEN_WIDTH,
 		SCREEN_HEIGHT,
 		SDL_WINDOW_SHOWN);
+	
 
 	if (m_window == NULL)
 	{
@@ -106,22 +112,32 @@ void apocalypsenow::Renderer::update()
 
 void apocalypsenow::Renderer::test_loadLevel()
 {
-	if (!g_tileTexture.loadTexture("resources/images/test/test_tiles.png"))
+	if (!g_tileTexture.loadTexture("resources/images/test/Map2.png"))
 		errorfile << "Fail in loading test tile" << std::endl;
 
-	if (!g_protagonistTexture.loadTexture("resources/images/test/test_Spriteleft.png"))
+	if (!g_blockTileTexture.loadTexture("resources/images/test/Map3.png"))
+		errorfile << "Fail in block texture tile" << std::endl;
+
+	if (!g_protagonistTextureTop.loadTexture("resources/images/test/test_sprite_top.png"))
+		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
+	if (!g_protagonistTextureBot.loadTexture("resources/images/test/test_sprite_bot.png"))
+		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
+	if (!g_protagonistTextureLeft.loadTexture("resources/images/test/test_sprite_left.png"))
+		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
+	if (!g_protagonistTextureRight.loadTexture("resources/images/test/test_sprite_right.png"))
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
 
-	// Clipping each frame
-	for (auto i = 0; i < PROT_TOTAL_FRAMES; i++)
+	// Clipping each frame of the protagonist. //current working for one direction.
+	for (auto j = 0; j < PROT_WALKING_DIRECTION; j++)
 	{
-		g_protagonistClips[i].x = i * PROT_WIDTH;
-		g_protagonistClips[i].y = 0;
-		g_protagonistClips[i].h = PROT_HEIGHT;
-		g_protagonistClips[i].w = PROT_WIDTH;
-
+		for (auto i = 0; i < PROT_TOTAL_FRAMES; i++)
+		{
+			g_protagonistClips[j][i].x = i * PROT_WIDTH;
+			g_protagonistClips[j][i].y = 0;
+			g_protagonistClips[j][i].h = PROT_HEIGHT;
+			g_protagonistClips[j][i].w = PROT_WIDTH;
+		}
 	}
-
 	std::ifstream testmap("test.map");
 	
 	//Tile* tiles[TILE_TOTAL];
@@ -146,11 +162,12 @@ void apocalypsenow::Renderer::test_loadLevel()
 		}
 
 		// Check if it is a valid tile.
-		if (tileType >= 0 && tileType <= TILE_TYPES)
+		if ((tileType >= 0 && tileType < TILE_TYPES) || tileType == TILE_BLOCK)
 		{
 			tiles[i] = new Tile(x, y, tileType);
 
 		}
+
 		// Next horizontal tile location		
 		x += TILE_WIDTH;
 		
@@ -164,65 +181,55 @@ void apocalypsenow::Renderer::test_loadLevel()
 	}
 
 	// Now clip
-	g_tileClip[TILE_RED].x = 0;
-	g_tileClip[TILE_RED].y = 0;
-	g_tileClip[TILE_RED].h = TILE_WIDTH;
-	g_tileClip[TILE_RED].w = TILE_HEIGHT;
-
-	g_tileClip[TILE_GREEN].x = 0;
-	g_tileClip[TILE_GREEN].y = 80;
-	g_tileClip[TILE_GREEN].h = TILE_WIDTH;
-	g_tileClip[TILE_GREEN].w = TILE_HEIGHT;
-
-	g_tileClip[TILE_BLUE].x = 0;
-	g_tileClip[TILE_BLUE].y = 160;
-	g_tileClip[TILE_BLUE].h = TILE_WIDTH;
-	g_tileClip[TILE_BLUE].w = TILE_HEIGHT;
-	
-	g_tileClip[TILE_TOPLEFT].x = 80;
+	g_tileClip[TILE_TOPLEFT].x = 0;
 	g_tileClip[TILE_TOPLEFT].y = 0;
 	g_tileClip[TILE_TOPLEFT].h = TILE_WIDTH;
 	g_tileClip[TILE_TOPLEFT].w = TILE_HEIGHT;
 
-	g_tileClip[TILE_LEFT].x = 80;
+	g_tileClip[TILE_LEFT].x = 0;
 	g_tileClip[TILE_LEFT].y = 80;
 	g_tileClip[TILE_LEFT].h = TILE_WIDTH;
 	g_tileClip[TILE_LEFT].w = TILE_HEIGHT;
 
-	g_tileClip[TILE_BOTLEFT].x = 80;
+	g_tileClip[TILE_BOTLEFT].x = 0;
 	g_tileClip[TILE_BOTLEFT].y = 160;
 	g_tileClip[TILE_BOTLEFT].h = TILE_WIDTH;
 	g_tileClip[TILE_BOTLEFT].w = TILE_HEIGHT;
-
-	g_tileClip[TILE_TOP].x = 160;
+	
+	g_tileClip[TILE_TOP].x = 80;
 	g_tileClip[TILE_TOP].y = 0;
 	g_tileClip[TILE_TOP].h = TILE_WIDTH;
 	g_tileClip[TILE_TOP].w = TILE_HEIGHT;
 
-	g_tileClip[TILE_MID].x = 160;
+	g_tileClip[TILE_MID].x = 80;
 	g_tileClip[TILE_MID].y = 80;
 	g_tileClip[TILE_MID].h = TILE_WIDTH;
 	g_tileClip[TILE_MID].w = TILE_HEIGHT;
 
-	g_tileClip[TILE_BOT].x = 160;
+	g_tileClip[TILE_BOT].x = 80;
 	g_tileClip[TILE_BOT].y = 160;
 	g_tileClip[TILE_BOT].h = TILE_WIDTH;
 	g_tileClip[TILE_BOT].w = TILE_HEIGHT;
 
-	g_tileClip[TILE_TOPRIGHT].x = 240;
+	g_tileClip[TILE_TOPRIGHT].x = 160;
 	g_tileClip[TILE_TOPRIGHT].y = 0;
 	g_tileClip[TILE_TOPRIGHT].h = TILE_WIDTH;
 	g_tileClip[TILE_TOPRIGHT].w = TILE_HEIGHT;
 
-	g_tileClip[TILE_RIGHT].x = 240;
+	g_tileClip[TILE_RIGHT].x = 160;
 	g_tileClip[TILE_RIGHT].y = 80;
 	g_tileClip[TILE_RIGHT].h = TILE_WIDTH;
 	g_tileClip[TILE_RIGHT].w = TILE_HEIGHT;
 
-	g_tileClip[TILE_BOTRIGHT].x = 240;
+	g_tileClip[TILE_BOTRIGHT].x = 160;
 	g_tileClip[TILE_BOTRIGHT].y = 160;
 	g_tileClip[TILE_BOTRIGHT].h = TILE_WIDTH;
 	g_tileClip[TILE_BOTRIGHT].w = TILE_HEIGHT;
+
+	g_blockTileClip.x = 0;
+	g_blockTileClip.y = 0;
+	g_blockTileClip.h = TILE_HEIGHT;
+	g_blockTileClip.w = TILE_WIDTH;
 
 	testmap.close();
 
@@ -297,14 +304,12 @@ void apocalypsenow::Renderer::render()
 void apocalypsenow::Renderer::execute()
 {
 	init();
-	
 	while (this->getExit() != true)
 	{
 		handleEvents();
-		hero.move(tiles);
 		hero.setCamera(g_camera);
-
 		hero.render(g_camera);
+		hero.move(tiles);
 		refreshLevel();
 	} 
 	cleanup();
