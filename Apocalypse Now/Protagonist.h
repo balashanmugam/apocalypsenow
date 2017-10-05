@@ -10,6 +10,7 @@ namespace apocalypsenow {
 
 	class Texture;
 	class Tile;
+	class Bullet;
 
 
 	//bool touchesWall(SDL_Rect box, Tile* tiles[]);
@@ -31,6 +32,9 @@ namespace apocalypsenow {
 	extern Texture g_protagonistTextureLeft;
 	extern Texture g_protagonistTextureRight;
 	extern SDL_Rect g_protagonistClips[PROT_WALKING_DIRECTION][PROT_TOTAL_FRAMES];
+
+	extern Tile* tiles[192];
+
 
 	// PROT aka Protagonist.
 	class Protagonist
@@ -59,7 +63,7 @@ namespace apocalypsenow {
 		Protagonist();
 
 		Protagonist(int t_x, int tx_y);
-
+		
 		//Handle events 
 		void handleEvents(SDL_Event& e);
 
@@ -77,6 +81,11 @@ namespace apocalypsenow {
 		int getDirection()
 		{
 			return m_direction;
+		}
+
+		SDL_Rect getBox()
+		{
+			return m_box;
 		}
 	
 	};

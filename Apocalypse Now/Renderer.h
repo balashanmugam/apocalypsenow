@@ -8,7 +8,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-
+#include "Bullet.h"
 #include "Texture.h"
 #include "Tile.h"
 #include "Timer.h"
@@ -33,6 +33,7 @@ namespace apocalypsenow {
 	// Level Constants
 	const int LEVEL_WIDTH = 1280;
 	const int LEVEL_HEIGHT = 960;
+	class Bullet;
 
 	class Renderer
 	{

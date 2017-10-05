@@ -14,20 +14,26 @@ namespace apocalypsenow
 	Texture g_protagonistTextureBot;
 	Texture g_protagonistTextureLeft;
 	Texture g_protagonistTextureRight;
+	Texture g_bulletTexture;
 
 	// global variables;
 	Texture g_tileTexture;
 	Texture g_blockTileTexture;
-	SDL_Rect g_tileClip[TILE_TYPES];
-	SDL_Rect g_blockTileClip;
+
 	SDL_Renderer* g_renderer;
 	std::fstream errorfile;
+
+	Bullet * b;
 
 	//Texture g_protagonistTexture;
 	SDL_Rect g_camera = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
 
 	// Protagonist Sprites clips
 	SDL_Rect g_protagonistClips[PROT_WALKING_DIRECTION][PROT_TOTAL_FRAMES];
+
+	SDL_Rect g_bulletClip;
+	SDL_Rect g_tileClip[TILE_TYPES];
+	SDL_Rect g_blockTileClip;
 
 	Tile* tiles[TILE_TOTAL];
 }
@@ -97,10 +103,6 @@ bool apocalypsenow::Renderer::init()
 	//Clears the screen
 	SDL_SetRenderDrawColor(g_renderer, 255,255, 255, 255);
 	SDL_RenderClear(g_renderer);
-
-
-	test_loadLevel();
-
 	return success;
 }
 
@@ -126,6 +128,11 @@ void apocalypsenow::Renderer::test_loadLevel()
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
 	if (!g_protagonistTextureRight.loadTexture("resources/images/test/test_sprite_right.png"))
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
+
+
+	if (!g_bulletTexture.loadTexture("resources/images/test/bulletf.png"))
+		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
+
 
 	// Clipping each frame of the protagonist. //current working for one direction.
 	for (auto j = 0; j < PROT_WALKING_DIRECTION; j++)
@@ -231,6 +238,13 @@ void apocalypsenow::Renderer::test_loadLevel()
 	g_blockTileClip.h = TILE_HEIGHT;
 	g_blockTileClip.w = TILE_WIDTH;
 
+	g_bulletClip.x = 0;
+	g_bulletClip.y = 0;
+	g_bulletClip.h = 25;
+	g_bulletClip.w = 25;
+
+
+
 	testmap.close();
 
 	//SDL_Rect camera = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
@@ -303,14 +317,21 @@ void apocalypsenow::Renderer::render()
 
 void apocalypsenow::Renderer::execute()
 {
+	Bullet* b = new Bullet(40, 40, BULLET_RIGHT);
 	init();
+	test_loadLevel();
+	b->render();
+
+	//b->launch(tiles);
+
 	while (this->getExit() != true)
 	{
+
+		refreshLevel();
+		hero.render(g_camera);
 		handleEvents();
 		hero.setCamera(g_camera);
-		hero.render(g_camera);
 		hero.move(tiles);
-		refreshLevel();
 	} 
 	cleanup();
 }

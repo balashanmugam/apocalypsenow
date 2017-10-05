@@ -2,6 +2,7 @@
 #ifndef _BULLET_H_
 #define _BULLET_H_
 #include "Renderer.h"
+
 namespace apocalypsenow{
 
 	class Texture;
@@ -20,9 +21,8 @@ namespace apocalypsenow{
 	const int BULLET_RIGHT = 2;
 	const int BULLET_TOP = 3;
 
-
 	extern Texture g_bulletTexture;
-
+	extern SDL_Rect g_bulletClip;
 
 	class Bullet
 	{
@@ -40,14 +40,13 @@ namespace apocalypsenow{
 		Bullet();
 		~Bullet();
 
-
 		bool touchesWall(Tile * tiles[]);
 
 		//Make the character move in the map
-		void move(Tile* tile[]);
+		void launch(Tile* tile[]);
 
-		// renders the protagonist to the screen.]// currently this is done in the renderer.cpp
-		void render(SDL_Rect& camera);
+		// renders the protagonist to the screen.// currently this is done in the renderer.cpp
+		void render();
 
 		int getDirection()
 		{

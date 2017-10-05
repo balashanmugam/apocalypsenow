@@ -88,8 +88,11 @@ void apocalypsenow::Protagonist::handleEvents(SDL_Event& e)
 			m_direction = PROT_WALK_RIGHT;
 			break;
 		
-		case SDLK_SPACE: // For shooting..
-
+		case SDLK_SPACE: 
+			// For shooting..
+			// On hit create a bullet object.
+			Bullet* bullet = new Bullet(m_box.x, m_box.y, m_direction);
+			bullet->launch(tiles);
 			break;
 		}
 	}
