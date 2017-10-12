@@ -25,21 +25,15 @@ namespace apocalypsenow{
 	extern Texture g_bulletTexture;
 	extern SDL_Rect g_bulletClip;
 
-	extern SDL_Thread* g_bulletShootThread;
-	extern SDL_Renderer* g_bulletRenderer;
-	extern bool g_quitThread;
-
 	class Bullet:public GameObject
 	{
 
 	public:
 
 		// Requires the origin point of the bullet and the direction along with which it passes.
-		Bullet(int t_x,int t_y,int t_direction);
 		Bullet();
-		~Bullet();
 
-		bool touchesWall(Tile * tiles[]);
+		~Bullet();
 
 		//Make the character move in the map
 		void launch(Tile* tile[]);

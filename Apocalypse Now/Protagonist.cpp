@@ -20,7 +20,6 @@ apocalypsenow::Protagonist::Protagonist()
 
 	m_frame = 0;
 	
-	m_direction = PROT_WALK_RIGHT;
 
 
 }

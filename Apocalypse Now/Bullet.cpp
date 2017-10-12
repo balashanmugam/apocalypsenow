@@ -1,20 +1,6 @@
 #include "Bullet.h"
 
 
-
-apocalypsenow::Bullet::Bullet(int t_x, int t_y, int t_direction)
-{
-	m_box.x = t_x;
-	m_box.y = t_y;
-
-	m_box.h = BULLET_HEIGHT;
-	m_box.w = BULLET_WIDTH;
-
-	m_direction = BULLET_RIGHT;
-
-	m_isAlive = true;
-}
-
 apocalypsenow::Bullet::Bullet()
 {
 	m_box.x = 0;
@@ -25,28 +11,11 @@ apocalypsenow::Bullet::Bullet()
 
 	m_direction = BULLET_RIGHT;
 }
-
-bool apocalypsenow::Bullet::touchesWall(Tile* tiles[])
-{
-	// go though each tile
-	for (auto i = 0; i < TILE_TOTAL; i++)
-	{
-		if (tiles[i]->getType() == TILE_BLOCK)
-		{
-			if (checkCollision(tiles[i]->getBox(), this->m_box))
-			{
-				apocalypsenow::errorfile << "Bullet Collision : " << tiles[i]->getType() << "  " << this->m_box.x << "  " << this->m_box.y << std::endl;
-				return true;
-			}
-		}
-	}
-	return false;
-}
 void apocalypsenow::Bullet::render()
 {
 
 	g_bulletTexture.render(m_box.x,m_box.y ,&g_bulletClip);
-	SDL_RenderPresent(g_bulletRenderer);
+	SDL_RenderPresent(g_renderer);
 
 }
 

@@ -5,7 +5,7 @@
 
 namespace apocalypsenow
 { 
-	class Tiles;
+	class Tile;
 	enum direction
 	{
 		LEFT,
@@ -18,14 +18,16 @@ namespace apocalypsenow
 	protected:
 		SDL_Rect m_box;
 		direction m_direction;
-		int m_velocity;
+		int m_velX;
+		int m_velY;
 		bool m_isAlive;
 	public:
 
-		GameObject(SDL_Rect box, direction d, int velocity);
+		GameObject(SDL_Rect box, direction d, int velX,int velY);
 		~GameObject();
 		bool collision(GameObject* t_object);
-		bool touchesWall(Tiles* tiles);
+		bool collision(SDL_Rect box);
+		bool touchesWall(Tile* tiles[]);
 		
 	};
 }
