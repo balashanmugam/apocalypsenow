@@ -1,5 +1,11 @@
 #include "Protagonist.h"
+namespace apocalypsenow{
+	extern SDL_Rect g_camera;
 
+	extern Protagonist hero;
+	//extern SDL_Renderer* g_bulletRenderer;
+
+}
 apocalypsenow::Protagonist::Protagonist()
 {
 	// init all
@@ -13,14 +19,13 @@ apocalypsenow::Protagonist::Protagonist()
 	m_box.w = PROT_WIDTH;//-15;
 
 	m_frame = 0;
-
+	
 	m_direction = PROT_WALK_RIGHT;
 
 
 }
 apocalypsenow::Protagonist::Protagonist(int t_x, int t_y)
 {
-	Protagonist();
 	m_box.x = t_x;
 	m_box.y = t_y;
 	m_box.h = PROT_HEIGHT;// -15;
@@ -89,10 +94,8 @@ void apocalypsenow::Protagonist::handleEvents(SDL_Event& e)
 			break;
 		
 		case SDLK_SPACE: 
-			// For shooting..
-			// On hit create a bullet object.
-			Bullet* bullet = new Bullet(m_box.x, m_box.y, m_direction);
-			bullet->launch(tiles);
+			//
+			
 			break;
 		}
 	}
@@ -127,30 +130,12 @@ void apocalypsenow::Protagonist::handleEvents(SDL_Event& e)
 	}
 }
 
-bool apocalypsenow::Protagonist::touchesWall(Tile* tiles[])
-{
-	// go though each tile
-	for (auto i = 0; i < TILE_TOTAL; i++)
-	{
-		if (tiles[i]->getType() == TILE_BLOCK)
-		{
-			if (checkCollision( tiles[i]->getBox(), this->m_box))
-			{
-				apocalypsenow::errorfile << "Collision : " << tiles[i]->getType()<< "  " << this->m_box.x << "  " << this->m_box.y << std::endl;
-				return true;
-			}
-		}	
-	}	
-	return false;
-}
-
 void apocalypsenow::Protagonist::move(Tile* tiles[])
 {
 
 	// if the character moves left/ right
 
 	m_box.x += m_velX;
-	//apocalypsenow::errorfile << "-------------Velocity x:  " << m_velX << std::endl;
 	for (int i = 0; i < m_velX ;i++)
 	{
 		if (i % 12 == 0)

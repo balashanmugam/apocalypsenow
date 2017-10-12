@@ -11,6 +11,7 @@ namespace apocalypsenow {
 	class Texture;
 	class Tile;
 	class Bullet;
+	class GameObject;
 
 
 	//bool touchesWall(SDL_Rect box, Tile* tiles[]);
@@ -33,11 +34,13 @@ namespace apocalypsenow {
 	extern Texture g_protagonistTextureRight;
 	extern SDL_Rect g_protagonistClips[PROT_WALKING_DIRECTION][PROT_TOTAL_FRAMES];
 
+	extern bool g_quitThread;
+
 	extern Tile* tiles[192];
 
 
 	// PROT aka Protagonist.
-	class Protagonist
+	class Protagonist: public GameObject
 	{
 	private:
 		std::string m_name;
@@ -45,29 +48,15 @@ namespace apocalypsenow {
 		int m_velX; // velocity in x direction
 		int m_velY; // Velocity in y directed.
 
-		// current frame
 		int m_frame;
 
-		//Walking direction.
-		int m_direction;
-
-		SDL_Rect m_box;
-
-
 	public:
-		static const int PROT_WIDTH = 50;
-		static const int PROT_HEIGHT = 50;
-
-		static const int PROT_SPEED = 2;
-
 		Protagonist();
 
 		Protagonist(int t_x, int tx_y);
 		
 		//Handle events 
 		void handleEvents(SDL_Event& e);
-
-		bool touchesWall(Tile * tiles[]);
 
 		//Make the character move in the map
 		void move(Tile* tile[]);

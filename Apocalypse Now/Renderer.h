@@ -7,6 +7,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include "SDL_thread.h"
 
 #include "Bullet.h"
 #include "Texture.h"
@@ -22,6 +23,8 @@ namespace apocalypsenow {
 	extern SDL_Renderer* g_renderer;
 	extern std::fstream errorfile;
 	extern std::ifstream test;
+
+	//SDL_Renderer* g_bulletRenderer;
 
 	// Screens constants
 	const int SCREEN_WIDTH = 640;

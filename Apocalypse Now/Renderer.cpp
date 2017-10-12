@@ -7,7 +7,7 @@ namespace apocalypsenow
 	Timer timeelapsed;
 
 	// Test protagonist
-	Protagonist hero(640,640);
+	Protagonist hero(40,40);
 
 	// Test Textures
 	Texture g_protagonistTextureTop;
@@ -22,9 +22,6 @@ namespace apocalypsenow
 
 	SDL_Renderer* g_renderer;
 	std::fstream errorfile;
-
-	Bullet * b;
-
 	//Texture g_protagonistTexture;
 	SDL_Rect g_camera = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
 
@@ -36,6 +33,12 @@ namespace apocalypsenow
 	SDL_Rect g_blockTileClip;
 
 	Tile* tiles[TILE_TOTAL];
+
+	SDL_Renderer* g_bulletRenderer;
+	//Multithreading. LOL
+	SDL_Thread* g_bulletShootThread = nullptr;
+	bool g_quitThread = false;
+
 }
 //Constructor
 apocalypsenow::Renderer::Renderer()
@@ -74,6 +77,7 @@ bool apocalypsenow::Renderer::init()
 
 	//Creates a apocalypsenow::Renderer using the pre created Window
 	g_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	g_bulletRenderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (g_renderer == nullptr)
 	{
 		success = false;
@@ -243,12 +247,8 @@ void apocalypsenow::Renderer::test_loadLevel()
 	g_bulletClip.h = 25;
 	g_bulletClip.w = 25;
 
-
-
 	testmap.close();
 
-	//SDL_Rect camera = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
-	
 	for (auto i = 0; i < TILE_TOTAL; i++)
 	{
 		tiles[i]->render(g_camera);
@@ -317,12 +317,8 @@ void apocalypsenow::Renderer::render()
 
 void apocalypsenow::Renderer::execute()
 {
-	Bullet* b = new Bullet(40, 40, BULLET_RIGHT);
 	init();
 	test_loadLevel();
-	b->render();
-
-	//b->launch(tiles);
 
 	while (this->getExit() != true)
 	{

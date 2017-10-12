@@ -1,8 +1,10 @@
 #include "Bullet.h"
 
+
+
 apocalypsenow::Bullet::Bullet(int t_x, int t_y, int t_direction)
 {
-	m_box.x = t_x+ 10;
+	m_box.x = t_x;
 	m_box.y = t_y;
 
 	m_box.h = BULLET_HEIGHT;
@@ -44,42 +46,33 @@ void apocalypsenow::Bullet::render()
 {
 
 	g_bulletTexture.render(m_box.x,m_box.y ,&g_bulletClip);
-	SDL_RenderPresent(g_renderer);
+	SDL_RenderPresent(g_bulletRenderer);
 
 }
 
 void apocalypsenow::Bullet::launch(Tile* tiles[])
 {
 
-	while (m_isAlive)
-	{
-		
-		m_box.x += BULLET_VELOCITY;
-
-		// Bullets horizontal movement
-		// if the character went out of the screen to the left, or the right, or in case it runs into a wall
-		if (m_box.x < 0 || m_box.x + PROT_WIDTH > LEVEL_WIDTH || touchesWall(tiles))
+		apocalypsenow::errorfile << "Bullet Spawn Point: " << m_box.x << "  " << m_box.y << std::endl;
+		while(this->m_isAlive)
 		{
-			m_box.x -= BULLET_VELOCITY;
-			// destroy
-			m_isAlive = false;
-
-		}
-
-		// if the character moves up and down
-
-		// if the character went too far to the top , or bottom, or touches the wall
-		//if (m_box.y < 0 || m_box.y + PROT_HEIGHT > LEVEL_HEIGHT || touchesWall(tiles))
-		{
-			//m_box.y -= BULLET_VELOCITY;
-			//m_isAlive = false;
-
-		}
-		render();
 		
-	}
-	
+			m_box.x += BULLET_VELOCITY;
 
+			// Bullets horizontal movement
+			// if the character went out of the screen to the left, or the right, or in case it runs into a wall
+			if (m_box.x < 0 || m_box.x + PROT_WIDTH > LEVEL_WIDTH || touchesWall(tiles))
+			{
+				m_box.x -= BULLET_VELOCITY;
+				// destroy
+				m_isAlive = false;
+
+			}
+
+			// if the character moves up and down
+			render();
+		}
+		//g_quitThread = true;
 }
 apocalypsenow::Bullet::~Bullet()
 {

@@ -6,6 +6,7 @@
 namespace apocalypsenow{
 
 	class Texture;
+	class GameObject;
 	class Tile;
 
 	// bullet dimensions
@@ -24,14 +25,12 @@ namespace apocalypsenow{
 	extern Texture g_bulletTexture;
 	extern SDL_Rect g_bulletClip;
 
-	class Bullet
-	{
-	private:
-		SDL_Rect m_box;
-		bool m_isAlive;
+	extern SDL_Thread* g_bulletShootThread;
+	extern SDL_Renderer* g_bulletRenderer;
+	extern bool g_quitThread;
 
-		// Direction can be any of the four. Left, right, top , bottom.
-		int m_direction;
+	class Bullet:public GameObject
+	{
 
 	public:
 
