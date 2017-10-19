@@ -1,27 +1,8 @@
 #include "Protagonist.h"
+
 namespace apocalypsenow{
 	extern SDL_Rect g_camera;
-
 	extern Protagonist hero;
-	//extern SDL_Renderer* g_bulletRenderer;
-
-}
-apocalypsenow::Protagonist::Protagonist()
-{
-	// init all
-	m_name = "Dummy";
-	m_velX = 0;
-	m_velY = 0;
-
-	m_box.x = 0;
-	m_box.y = 0;
-	m_box.h = PROT_HEIGHT;// -15;
-	m_box.w = PROT_WIDTH;//-15;
-
-	m_frame = 0;
-	
-
-
 }
 apocalypsenow::Protagonist::Protagonist(int t_x, int t_y)
 {
@@ -32,7 +13,7 @@ apocalypsenow::Protagonist::Protagonist(int t_x, int t_y)
 
 	m_frame = 0;
 
-	m_direction = PROT_WALK_RIGHT;
+	m_direction = Direction::RIGHT;
 }
 void apocalypsenow::Protagonist::render(SDL_Rect& camera)
 {
@@ -41,16 +22,16 @@ void apocalypsenow::Protagonist::render(SDL_Rect& camera)
 
 	switch (m_direction)
 	{
-	case PROT_WALK_TOP:
+	case Direction::TOP:
 		g_protagonistTextureTop.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
 		break;
-	case PROT_WALK_BOT:
+	case Direction::BOTTOM:
 		g_protagonistTextureBot.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
 		break;
-	case PROT_WALK_LEFT:
+	case Direction::LEFT:
 		g_protagonistTextureLeft.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
 		break;
-	case PROT_WALK_RIGHT:
+	case Direction::RIGHT:
 		g_protagonistTextureRight.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
 		break;
 	}
@@ -61,6 +42,10 @@ void apocalypsenow::Protagonist::render(SDL_Rect& camera)
 	
 	SDL_RenderPresent(g_renderer);
 
+}
+
+void apocalypsenow::Protagonist::update()
+{
 }
 
 void apocalypsenow::Protagonist::handleEvents(SDL_Event& e)
@@ -74,22 +59,22 @@ void apocalypsenow::Protagonist::handleEvents(SDL_Event& e)
 		case SDLK_w:
 		case SDLK_UP:
 			m_velY -= PROT_SPEED;
-			m_direction = PROT_WALK_TOP;
+			m_direction = Direction::TOP;
 			break;
 		case SDLK_s:
 		case SDLK_DOWN:
 			m_velY += PROT_SPEED;
-			m_direction = PROT_WALK_BOT;
+			m_direction = Direction::BOTTOM;
 			break;
 		case SDLK_a:
 		case SDLK_LEFT:
 			m_velX -= PROT_SPEED;
-			m_direction = PROT_WALK_LEFT;
+			m_direction = Direction::LEFT;
 			break;
 		case SDLK_d:
 		case SDLK_RIGHT:
 			m_velX += PROT_SPEED;
-			m_direction = PROT_WALK_RIGHT;
+			m_direction = Direction::RIGHT;
 			break;
 		
 		case SDLK_SPACE: 
@@ -105,22 +90,22 @@ void apocalypsenow::Protagonist::handleEvents(SDL_Event& e)
 		case SDLK_w:
 		case SDLK_UP:
 			m_velY += PROT_SPEED;
-			m_direction = PROT_WALK_TOP;
+			m_direction = Direction::TOP;
 			break;
 		case SDLK_s:
 		case SDLK_DOWN:
 			m_velY -= PROT_SPEED;
-			m_direction = PROT_WALK_BOT;
+			m_direction = Direction::BOTTOM;
 			break;
 		case SDLK_a:
 		case SDLK_LEFT:
 			m_velX += PROT_SPEED;
-			m_direction = PROT_WALK_LEFT;
+			m_direction = Direction::LEFT;
 			break;
 		case SDLK_d:
 		case SDLK_RIGHT:
 			m_velX -= PROT_SPEED;
-			m_direction = PROT_WALK_RIGHT;
+			m_direction = Direction::RIGHT;
 			break;
 
 		case SDLK_SPACE:

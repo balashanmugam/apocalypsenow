@@ -9,13 +9,18 @@ apocalypsenow::Bullet::Bullet()
 	m_box.w = BULLET_WIDTH;
 	m_isAlive = true;
 
-	m_direction = BULLET_RIGHT;
+	m_direction = Direction::RIGHT;
 }
 void apocalypsenow::Bullet::render()
 {
 
 	g_bulletTexture.render(m_box.x,m_box.y ,&g_bulletClip);
 	SDL_RenderPresent(g_renderer);
+
+}
+
+void apocalypsenow::Bullet::update()
+{
 
 }
 

@@ -1,12 +1,18 @@
 #pragma once
 #ifndef _BULLET_H_
 #define _BULLET_H_
-#include "Renderer.h"
+#include <iostream>
+#include <fstream>
+
+#include "GameObject.h"
+#include "Texture.h"
+#include "Tile.h"
+#include "Timer.h"
+#include "Protagonist.h"
+
 
 namespace apocalypsenow{
-
 	class Texture;
-	class GameObject;
 	class Tile;
 
 	// bullet dimensions
@@ -16,12 +22,6 @@ namespace apocalypsenow{
 	// bullet velocity.
 	const int BULLET_VELOCITY = 5;
 
-	//Bullet directions .
-	const int BULLET_LEFT = 0;
-	const int BULLET_BOT = 1;
-	const int BULLET_RIGHT = 2;
-	const int BULLET_TOP = 3;
-
 	extern Texture g_bulletTexture;
 	extern SDL_Rect g_bulletClip;
 
@@ -30,7 +30,6 @@ namespace apocalypsenow{
 
 	public:
 
-		// Requires the origin point of the bullet and the direction along with which it passes.
 		Bullet();
 
 		~Bullet();
@@ -41,12 +40,10 @@ namespace apocalypsenow{
 		// renders the protagonist to the screen.// currently this is done in the renderer.cpp
 		void render();
 
-		int getDirection()
-		{
-			return m_direction;
-		}
-
 		void destroy();
+
+		// updates the location of the charracter
+		void update();
 
 
 	};

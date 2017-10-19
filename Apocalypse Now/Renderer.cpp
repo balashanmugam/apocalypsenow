@@ -1,4 +1,6 @@
 #include "Renderer.h"
+#include "Protagonist.h"
+
 
 namespace apocalypsenow
 {
@@ -34,10 +36,7 @@ namespace apocalypsenow
 
 	Tile* tiles[TILE_TOTAL];
 
-	SDL_Renderer* g_bulletRenderer;
 	//Multithreading. LOL
-	SDL_Thread* g_bulletShootThread = nullptr;
-	bool g_quitThread = false;
 
 }
 //Constructor
@@ -77,7 +76,6 @@ bool apocalypsenow::Renderer::init()
 
 	//Creates a apocalypsenow::Renderer using the pre created Window
 	g_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	g_bulletRenderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (g_renderer == nullptr)
 	{
 		success = false;
@@ -88,7 +86,7 @@ bool apocalypsenow::Renderer::init()
 	int image_flags = IMG_INIT_PNG | IMG_INIT_JPG;
 	int image_inits = IMG_Init(image_flags);
 	
-	if (image_inits&image_flags != image_flags)
+	if ((image_inits &  image_flags) != image_flags)
 	{
 		success = false;
 		errorfile << "Error in initialising image flags subsystem." << std::endl;
@@ -138,7 +136,7 @@ void apocalypsenow::Renderer::test_loadLevel()
 		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
 
 
-	// Clipping each frame of the protagonist. //current working for one direction.
+	// Clipping each frame of the protagonist. //current working for one Direction.
 	for (auto j = 0; j < PROT_WALKING_DIRECTION; j++)
 	{
 		for (auto i = 0; i < PROT_TOTAL_FRAMES; i++)

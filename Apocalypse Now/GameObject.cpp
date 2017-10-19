@@ -1,6 +1,11 @@
 #include "GameObject.h"
 
-apocalypsenow::GameObject::GameObject(SDL_Rect box, direction d, int velX,int velY)
+apocalypsenow::GameObject::GameObject()
+{
+	
+}
+
+apocalypsenow::GameObject::GameObject(SDL_Rect box, Direction d, int velX,int velY)
 {
 	m_box = box;
 	m_direction = d;
@@ -8,6 +13,10 @@ apocalypsenow::GameObject::GameObject(SDL_Rect box, direction d, int velX,int ve
 	m_velY = velY;
 	m_isAlive = true; // For players it is health. For bullets it's presence, For zombies it is their life.// Oh wait. Zombies don't have health.
 
+}
+
+apocalypsenow::GameObject::~GameObject()
+{
 }
 
 
@@ -51,7 +60,7 @@ bool apocalypsenow::GameObject::collision(SDL_Rect box)
 }
 bool apocalypsenow::GameObject::collision(GameObject * t_object)
 {
-	collision(t_object->m_box);
+	return collision(t_object->m_box);
 }
 
 bool apocalypsenow::GameObject::touchesWall(Tile* tiles[])

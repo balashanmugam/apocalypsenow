@@ -53,7 +53,7 @@ void apocalypsenow::Timer::unpause()
 		
 		m_isPaused = false;
 
-		m_start - SDL_GetTicks() - m_pause;
+		m_start = SDL_GetTicks() - m_pause;
 		m_pause = 0;
 		
 	}

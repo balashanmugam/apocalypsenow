@@ -30,6 +30,10 @@ namespace apocalypsenow
 	const int TILE_RIGHT = 7;
 	const int TILE_BOTRIGHT = 8;
 	const int TILE_BLOCK = 99;
+
+	const int LEVEL_WIDTH = 1280;
+	const int LEVEL_HEIGHT = 960;
+
 	class Tile
 	{
 	private:

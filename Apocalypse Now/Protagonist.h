@@ -2,7 +2,14 @@
 #ifndef _PROTAGONIST_H_
 #define _PROTAGONIST_H_
 
-#include "Renderer.h"
+#include <iostream>
+#include <fstream>
+
+#include "GameObject.h"
+#include "Texture.h"
+#include "Tile.h"
+#include "Timer.h"
+
 
 namespace apocalypsenow {
 
@@ -10,23 +17,17 @@ namespace apocalypsenow {
 
 	class Texture;
 	class Tile;
-	class Bullet;
-	class GameObject;
 
 
 	//bool touchesWall(SDL_Rect box, Tile* tiles[]);
 
-	const int PROT_WALK_TOP = 0;
-	const int PROT_WALK_BOT = 1;
-	const int PROT_WALK_LEFT = 2;
-	const int PROT_WALK_RIGHT = 3;
-	
 	const int PROT_WALKING_DIRECTION = 4;
-
 	const int PROT_TOTAL_FRAMES = 10;
 
 	const int PROT_WIDTH = 60;
 	const int PROT_HEIGHT = 60;
+
+	const int PROT_SPEED = 5;
 
 	extern Texture g_protagonistTextureTop;
 	extern Texture g_protagonistTextureBot;
@@ -34,10 +35,7 @@ namespace apocalypsenow {
 	extern Texture g_protagonistTextureRight;
 	extern SDL_Rect g_protagonistClips[PROT_WALKING_DIRECTION][PROT_TOTAL_FRAMES];
 
-	extern bool g_quitThread;
-
 	extern Tile* tiles[192];
-
 
 	// PROT aka Protagonist.
 	class Protagonist: public GameObject
@@ -45,13 +43,13 @@ namespace apocalypsenow {
 	private:
 		std::string m_name;
 
-		int m_velX; // velocity in x direction
+		int m_velX; // velocity in x Direction
 		int m_velY; // Velocity in y directed.
 
 		int m_frame;
 
 	public:
-		Protagonist();
+		//Protagonist();
 
 		Protagonist(int t_x, int tx_y);
 		
@@ -66,16 +64,10 @@ namespace apocalypsenow {
 
 		// renders the protagonist to the screen.]// currently this is done in the renderer.cpp
 		void render(SDL_Rect& camera);
-	
-		int getDirection()
-		{
-			return m_direction;
-		}
 
-		SDL_Rect getBox()
-		{
-			return m_box;
-		}
+		// updates the location of the charracter
+		void update();
+	
 	
 	};
 }

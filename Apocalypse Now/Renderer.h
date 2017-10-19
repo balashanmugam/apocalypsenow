@@ -2,18 +2,16 @@
 #ifndef _RENDERER_H_
 #define _RENDERER_H_
 
+#include <SDL.h>
+#include <SDL_ttf.h>
+#include <SDL_image.h>
 #include <iostream>
 #include <fstream>
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#include "SDL_thread.h"
 
-#include "Bullet.h"
+#include "GameObject.h"
 #include "Texture.h"
 #include "Tile.h"
 #include "Timer.h"
-#include "Protagonist.h"
 
 // This class will load all the necessary things required for the game.
 // Also, this class will contain the GAME LOOP
@@ -34,8 +32,7 @@ namespace apocalypsenow {
 	const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 
 	// Level Constants
-	const int LEVEL_WIDTH = 1280;
-	const int LEVEL_HEIGHT = 960;
+
 	class Bullet;
 
 	class Renderer
