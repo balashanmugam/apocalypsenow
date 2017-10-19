@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include "Protagonist.h"
+#include "Bullet.h"
 
 
 namespace apocalypsenow
@@ -10,13 +11,22 @@ namespace apocalypsenow
 
 	// Test protagonist
 	Protagonist hero(40,40);
+	Bullet b[999];
+
+	int g_bulletIndex = 0;
 
 	// Test Textures
 	Texture g_protagonistTextureTop;
 	Texture g_protagonistTextureBot;
 	Texture g_protagonistTextureLeft;
 	Texture g_protagonistTextureRight;
-	Texture g_bulletTexture;
+
+	// bullet textures
+	Texture g_bulletTextureRight;
+	Texture g_bulletTextureLeft;
+	Texture g_bulletTextureTop;
+	Texture g_bulletTextureBot;
+
 
 	// global variables;
 	Texture g_tileTexture;
@@ -108,10 +118,6 @@ bool apocalypsenow::Renderer::init()
 	return success;
 }
 
-void apocalypsenow::Renderer::update()
-{
-	// handles input too!
-}
 
 
 void apocalypsenow::Renderer::test_loadLevel()
@@ -132,7 +138,13 @@ void apocalypsenow::Renderer::test_loadLevel()
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
 
 
-	if (!g_bulletTexture.loadTexture("resources/images/test/bulletf.png"))
+	if (!g_bulletTextureRight.loadTexture("resources/images/test/bulletf_right.png"))
+		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
+	if (!g_bulletTextureLeft.loadTexture("resources/images/test/bulletf_left.png"))
+		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
+	if (!g_bulletTextureTop.loadTexture("resources/images/test/bulletf_top.png"))
+		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
+	if (!g_bulletTextureBot.loadTexture("resources/images/test/bulletf_bot.png"))
 		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
 
 
@@ -260,6 +272,12 @@ void apocalypsenow::Renderer::test_displaylevel()
 
 
 }
+void apocalypsenow::Renderer::update()
+{
+	hero.update();
+	for(auto i = 0;i < g_bulletIndex;i++)
+		b[i].update();
+}
 
 void apocalypsenow::Renderer::refreshLevel()
 {
@@ -274,6 +292,7 @@ void apocalypsenow::Renderer::refreshLevel()
 // Will handle close and keyboard press events.
 void apocalypsenow::Renderer::handleEvents()
 {
+	
 	while (SDL_PollEvent(&m_event))
 	{
 		if (m_event.type == SDL_QUIT)
@@ -281,6 +300,18 @@ void apocalypsenow::Renderer::handleEvents()
 			//exits.
 			m_exit = true;
 			
+		}
+		else if (m_event.type == SDL_KEYDOWN && m_event.key.repeat == 0)
+		{
+			switch (m_event.key.keysym.sym)
+			{
+			case SDLK_SPACE:
+				b[g_bulletIndex].fireBullet(hero.getBox().x, hero.getBox().y, hero.getDirection());
+				g_bulletIndex++;
+				if (g_bulletIndex >= 999)
+					g_bulletIndex = 0;
+				break;
+			}
 		}
 		// hero.
 		hero.handleEvents(m_event);
@@ -310,7 +341,13 @@ bool apocalypsenow::Renderer::getExit() const
 // Renders all the important textures and stuffs.
 void apocalypsenow::Renderer::render()
 {
-	
+	refreshLevel();
+	for (auto i = 0; i < g_bulletIndex; i++)
+		b[i].render();
+	hero.render(g_camera);
+	hero.setCamera(g_camera);
+	SDL_RenderPresent(g_renderer);
+
 }
 
 void apocalypsenow::Renderer::execute()
@@ -320,12 +357,9 @@ void apocalypsenow::Renderer::execute()
 
 	while (this->getExit() != true)
 	{
-
-		refreshLevel();
-		hero.render(g_camera);
+		update();
+		render();
 		handleEvents();
-		hero.setCamera(g_camera);
-		hero.move(tiles);
 	} 
 	cleanup();
 }

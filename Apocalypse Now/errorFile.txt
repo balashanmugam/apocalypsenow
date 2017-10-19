@@ -1,6 +1,7 @@
-Bullet Spawn Point: 94  94
-Bullet Spawn Point: 94  94
-Bullet Spawn Point: 94  94
+Location: 275   155
+Location: 250   155
+Location: 255   200
+Location: 255   200
 Bullet Spawn Point: 122  122
 Bullet Spawn Point: 126  126
 Bullet Spawn Point: 132  132

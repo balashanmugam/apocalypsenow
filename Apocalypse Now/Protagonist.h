@@ -27,7 +27,7 @@ namespace apocalypsenow {
 	const int PROT_WIDTH = 60;
 	const int PROT_HEIGHT = 60;
 
-	const int PROT_SPEED = 5;
+	const int PROT_SPEED = 3;
 
 	extern Texture g_protagonistTextureTop;
 	extern Texture g_protagonistTextureBot;
@@ -42,9 +42,6 @@ namespace apocalypsenow {
 	{
 	private:
 		std::string m_name;
-
-		int m_velX; // velocity in x Direction
-		int m_velY; // Velocity in y directed.
 
 		int m_frame;
 

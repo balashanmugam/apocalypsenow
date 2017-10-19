@@ -38,14 +38,11 @@ void apocalypsenow::Protagonist::render(SDL_Rect& camera)
 
 	if (m_frame >= PROT_TOTAL_FRAMES)
 		m_frame = 0;
-
-	
-	SDL_RenderPresent(g_renderer);
-
 }
 
 void apocalypsenow::Protagonist::update()
 {
+	move(tiles);
 }
 
 void apocalypsenow::Protagonist::handleEvents(SDL_Event& e)
@@ -78,8 +75,6 @@ void apocalypsenow::Protagonist::handleEvents(SDL_Event& e)
 			break;
 		
 		case SDLK_SPACE: 
-			//
-			
 			break;
 		}
 	}
@@ -90,22 +85,18 @@ void apocalypsenow::Protagonist::handleEvents(SDL_Event& e)
 		case SDLK_w:
 		case SDLK_UP:
 			m_velY += PROT_SPEED;
-			m_direction = Direction::TOP;
 			break;
 		case SDLK_s:
 		case SDLK_DOWN:
 			m_velY -= PROT_SPEED;
-			m_direction = Direction::BOTTOM;
 			break;
 		case SDLK_a:
 		case SDLK_LEFT:
 			m_velX += PROT_SPEED;
-			m_direction = Direction::LEFT;
 			break;
 		case SDLK_d:
 		case SDLK_RIGHT:
 			m_velX -= PROT_SPEED;
-			m_direction = Direction::RIGHT;
 			break;
 
 		case SDLK_SPACE:

@@ -28,10 +28,10 @@ bool apocalypsenow::GameObject::collision(SDL_Rect box)
 	int botA, botB;
 
 	// Calculate A values.
-	leftA = this->m_box.x;
-	rightA = this->m_box.x + this->m_box.w;
-	topA = this->m_box.y;
-	botA = this->m_box.y + this->m_box.h;
+	leftA = m_box.x;
+	rightA = m_box.x + m_box.w;
+	topA = m_box.y;
+	botA = m_box.y + m_box.h;
 
 	// Similarly, calculate B
 	leftB = box.x;
@@ -58,7 +58,7 @@ bool apocalypsenow::GameObject::collision(SDL_Rect box)
 	}
 	return true;
 }
-bool apocalypsenow::GameObject::collision(GameObject * t_object)
+bool apocalypsenow::GameObject::collision(GameObject* t_object)
 {
 	return collision(t_object->m_box);
 }
@@ -66,9 +66,9 @@ bool apocalypsenow::GameObject::collision(GameObject * t_object)
 bool apocalypsenow::GameObject::touchesWall(Tile* tiles[])
 {
 	// go though each tile
-	for (auto i = 0; i < TILE_TOTAL; i++)
+	for (auto i = 0; i < TILE_TOTAL;i++)
 	{
-		if ((tiles[i]->getType() >= TILE_MID) && (tiles[i]->getType() <= TILE_TOPLEFT))
+		if (tiles[i]->getType() == TILE_BLOCK)
 		{
 			if (collision(tiles[i]->getBox()))
 			{

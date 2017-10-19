@@ -3,50 +3,86 @@
 
 apocalypsenow::Bullet::Bullet()
 {
-	m_box.x = 0;
-	m_box.y = 0;
 	m_box.h = BULLET_HEIGHT;
 	m_box.w = BULLET_WIDTH;
-	m_isAlive = true;
+	m_isAlive = false;
 
 	m_direction = Direction::RIGHT;
 }
+
+
 void apocalypsenow::Bullet::render()
 {
-
-	g_bulletTexture.render(m_box.x,m_box.y ,&g_bulletClip);
-	SDL_RenderPresent(g_renderer);
-
+	if (m_isAlive)
+	{
+		switch (m_direction)
+		{
+		case Direction::LEFT:
+			g_bulletTextureLeft.render(m_box.x - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
+			break;
+		case Direction::RIGHT:
+			g_bulletTextureRight.render(m_box.x - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
+			break;
+		case Direction::TOP:
+			g_bulletTextureTop.render(m_box.x - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
+			break;
+		case Direction::BOTTOM:
+			g_bulletTextureBot.render(m_box.x - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
+			break;
+		}
+	}
 }
 
 void apocalypsenow::Bullet::update()
 {
-
-}
-
-void apocalypsenow::Bullet::launch(Tile* tiles[])
-{
-
-		apocalypsenow::errorfile << "Bullet Spawn Point: " << m_box.x << "  " << m_box.y << std::endl;
-		while(this->m_isAlive)
+	if (m_isAlive)
+	{
+		if (m_direction == Direction::RIGHT)
 		{
-		
 			m_box.x += BULLET_VELOCITY;
-
-			// Bullets horizontal movement
-			// if the character went out of the screen to the left, or the right, or in case it runs into a wall
-			if (m_box.x < 0 || m_box.x + PROT_WIDTH > LEVEL_WIDTH || touchesWall(tiles))
+			if (m_box.x < 0 || m_box.x + BULLET_WIDTH > LEVEL_WIDTH || touchesWall(tiles))
 			{
 				m_box.x -= BULLET_VELOCITY;
-				// destroy
 				m_isAlive = false;
-
 			}
-
-			// if the character moves up and down
-			render();
 		}
-		//g_quitThread = true;
+		else if (m_direction == Direction::LEFT)
+		{
+			m_box.x -= BULLET_VELOCITY;
+			if (m_box.x < 0 || m_box.x + BULLET_WIDTH > LEVEL_WIDTH || touchesWall(tiles))
+			{
+				m_box.x += BULLET_VELOCITY;
+				m_isAlive = false;
+			}
+		}
+		else if (m_direction == Direction::BOTTOM)
+		{
+			m_box.y += BULLET_VELOCITY;
+			if(m_box.y < 0 || m_box.y + BULLET_HEIGHT > LEVEL_HEIGHT || touchesWall(tiles))
+			{
+				m_box.y -= BULLET_VELOCITY;
+				m_isAlive = false;
+			}
+		}
+		else if (m_direction == Direction::TOP)
+		{
+			m_box.y -= BULLET_VELOCITY;
+			if (m_box.y < 0 || m_box.y + BULLET_HEIGHT > LEVEL_HEIGHT || touchesWall(tiles))
+			{
+				m_box.y += BULLET_VELOCITY;
+				m_isAlive = false;
+			}
+		}
+	}
+}
+
+void apocalypsenow::Bullet::fireBullet(int x_, int y_,apocalypsenow::Direction dir_ )
+{
+	m_box.x = x_;
+	m_box.y = y_;
+	m_direction = dir_;
+	m_isAlive = true;
+
 }
 apocalypsenow::Bullet::~Bullet()
 {

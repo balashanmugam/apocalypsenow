@@ -16,14 +16,18 @@ namespace apocalypsenow{
 	class Tile;
 
 	// bullet dimensions
-	const int BULLET_WIDTH = 10;
-	const int BULLET_HEIGHT = 10;
+	const int BULLET_WIDTH = 25;
+	const int BULLET_HEIGHT = 25;
 	
 	// bullet velocity.
-	const int BULLET_VELOCITY = 5;
+	const int BULLET_VELOCITY = 7;
 
-	extern Texture g_bulletTexture;
+	extern Texture g_bulletTextureLeft;
+	extern Texture g_bulletTextureBot;
+	extern Texture g_bulletTextureRight;
+	extern Texture g_bulletTextureTop;
 	extern SDL_Rect g_bulletClip;
+	extern SDL_Rect g_camera;
 
 	class Bullet:public GameObject
 	{
@@ -32,10 +36,13 @@ namespace apocalypsenow{
 
 		Bullet();
 
+		// Gets the starting location of the bullet.  
+		Bullet(int x, int y);
+		
 		~Bullet();
 
 		//Make the character move in the map
-		void launch(Tile* tile[]);
+		void fireBullet(int x_, int y_, apocalypsenow::Direction dir_);
 
 		// renders the protagonist to the screen.// currently this is done in the renderer.cpp
 		void render();
