@@ -1,6 +1,7 @@
 #include "Renderer.h"
-#include "Protagonist.h"
+#include "Player.h"
 #include "Bullet.h"
+#include "Zombie.h"
 
 
 namespace apocalypsenow
@@ -10,23 +11,29 @@ namespace apocalypsenow
 	Timer timeelapsed;
 
 	// Test protagonist
-	Protagonist hero(40,40);
+	Player hero(40,40);
 	Bullet b[999];
+	Zombie z;
 
 	int g_bulletIndex = 0;
 
 	// Test Textures
-	Texture g_protagonistTextureTop;
-	Texture g_protagonistTextureBot;
-	Texture g_protagonistTextureLeft;
-	Texture g_protagonistTextureRight;
+	Texture g_playerTextureLeft;
+	Texture g_playerTextureBot;
+	Texture g_playerTextureRight;
+	Texture g_playerTextureTop;
 
 	// bullet textures
-	Texture g_bulletTextureRight;
 	Texture g_bulletTextureLeft;
-	Texture g_bulletTextureTop;
 	Texture g_bulletTextureBot;
+	Texture g_bulletTextureRight;
+	Texture g_bulletTextureTop;
 
+	// Zombie textures
+	Texture g_zombieLeft;
+	Texture g_zombieBot;
+	Texture g_zombieRight;
+	Texture g_zombieTop;
 
 	// global variables;
 	Texture g_tileTexture;
@@ -37,8 +44,9 @@ namespace apocalypsenow
 	//Texture g_protagonistTexture;
 	SDL_Rect g_camera = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
 
-	// Protagonist Sprites clips
-	SDL_Rect g_protagonistClips[PROT_WALKING_DIRECTION][PROT_TOTAL_FRAMES];
+	// Player Sprites clips
+	SDL_Rect g_playerClips[DIRECTION_TOTAL][PLAYER_TOTAL_FRAMES];
+	SDL_Rect g_zombieClips[DIRECTION_TOTAL][ZOMBIE_FRAMES];
 
 	SDL_Rect g_bulletClip;
 	SDL_Rect g_tileClip[TILE_TYPES];
@@ -115,6 +123,9 @@ bool apocalypsenow::Renderer::init()
 	//Clears the screen
 	SDL_SetRenderDrawColor(g_renderer, 255,255, 255, 255);
 	SDL_RenderClear(g_renderer);
+
+	// random spawn zombies.
+	z.spawn(40, 120);
 	return success;
 }
 
@@ -122,22 +133,23 @@ bool apocalypsenow::Renderer::init()
 
 void apocalypsenow::Renderer::test_loadLevel()
 {
+	// Loading map related textures
 	if (!g_tileTexture.loadTexture("resources/images/test/Map2.png"))
 		errorfile << "Fail in loading test tile" << std::endl;
-
 	if (!g_blockTileTexture.loadTexture("resources/images/test/Map3.png"))
 		errorfile << "Fail in block texture tile" << std::endl;
 
-	if (!g_protagonistTextureTop.loadTexture("resources/images/test/test_sprite_top.png"))
+	// Loading player sprites.
+	if (!g_playerTextureTop.loadTexture("resources/images/test/test_sprite_top.png"))
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
-	if (!g_protagonistTextureBot.loadTexture("resources/images/test/test_sprite_bot.png"))
+	if (!g_playerTextureBot.loadTexture("resources/images/test/test_sprite_bot.png"))
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
-	if (!g_protagonistTextureLeft.loadTexture("resources/images/test/test_sprite_left.png"))
+	if (!g_playerTextureLeft.loadTexture("resources/images/test/test_sprite_left.png"))
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
-	if (!g_protagonistTextureRight.loadTexture("resources/images/test/test_sprite_right.png"))
+	if (!g_playerTextureRight.loadTexture("resources/images/test/test_sprite_right.png"))
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
 
-
+	// Loading bullet sprites into textures.
 	if (!g_bulletTextureRight.loadTexture("resources/images/test/bulletf_right.png"))
 		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
 	if (!g_bulletTextureLeft.loadTexture("resources/images/test/bulletf_left.png"))
@@ -146,22 +158,41 @@ void apocalypsenow::Renderer::test_loadLevel()
 		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
 	if (!g_bulletTextureBot.loadTexture("resources/images/test/bulletf_bot.png"))
 		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
+	
+	//Loading zombie textures.
+	if (!g_zombieLeft.loadTexture("resources/images/test/zombie_left.png"))
+		errorfile << "Zombie Texture loading failed: Unable to load sprite sheet." << std::endl;
+	if (!g_zombieRight.loadTexture("resources/images/test/zombie_right.png"))
+		errorfile << "Zombie Texture loading failed: Unable to load sprite sheet." << std::endl;
+	if (!g_zombieTop.loadTexture("resources/images/test/zombie_top.png"))
+		errorfile << "Zombie Texture loading failed: Unable to load sprite sheet." << std::endl;
+	if (!g_zombieBot.loadTexture("resources/images/test/zombie_bot.png"))
+		errorfile << "Zombie Texture loading failed: Unable to load sprite sheet." << std::endl;
 
-
-	// Clipping each frame of the protagonist. //current working for one Direction.
-	for (auto j = 0; j < PROT_WALKING_DIRECTION; j++)
+	// Clipping each frame of the protagonist. 
+	for (auto j = 0; j < DIRECTION_TOTAL; j++)
 	{
-		for (auto i = 0; i < PROT_TOTAL_FRAMES; i++)
+		for (auto i = 0; i < PLAYER_TOTAL_FRAMES; i++)
 		{
-			g_protagonistClips[j][i].x = i * PROT_WIDTH;
-			g_protagonistClips[j][i].y = 0;
-			g_protagonistClips[j][i].h = PROT_HEIGHT;
-			g_protagonistClips[j][i].w = PROT_WIDTH;
+			g_playerClips[j][i].x = i * PLAYER_WIDTH;
+			g_playerClips[j][i].y = 0;
+			g_playerClips[j][i].h = PLAYER_HEIGHT;
+			g_playerClips[j][i].w = PLAYER_WIDTH;
+		}
+	}
+	// Clipping each frame of the Zombies.
+	for (auto j = 0; j < DIRECTION_TOTAL; j++)
+	{
+		for (auto i = 0; i < ZOMBIE_FRAMES; i++)
+		{
+			g_zombieClips[j][i].x = i * ZOMBIE_WIDTH;
+			g_zombieClips[j][i].y = 0;
+			g_zombieClips[j][i].h = ZOMBIE_HEIGHT;
+			g_zombieClips[j][i].w = ZOMBIE_WIDTH;
 		}
 	}
 	std::ifstream testmap("test.map");
 	
-	//Tile* tiles[TILE_TOTAL];
 	int x = 0;
 	int y = 0;
 
@@ -258,7 +289,6 @@ void apocalypsenow::Renderer::test_loadLevel()
 	g_bulletClip.w = 25;
 
 	testmap.close();
-
 	for (auto i = 0; i < TILE_TOTAL; i++)
 	{
 		tiles[i]->render(g_camera);
@@ -277,6 +307,7 @@ void apocalypsenow::Renderer::update()
 	hero.update();
 	for(auto i = 0;i < g_bulletIndex;i++)
 		b[i].update();
+	z.update();
 }
 
 void apocalypsenow::Renderer::refreshLevel()
@@ -286,7 +317,6 @@ void apocalypsenow::Renderer::refreshLevel()
 		tiles[i]->render(g_camera);
 	}
 
-	//SDL_RenderPresent(g_renderer);
 }
 
 // Will handle close and keyboard press events.
@@ -346,6 +376,7 @@ void apocalypsenow::Renderer::render()
 		b[i].render();
 	hero.render(g_camera);
 	hero.setCamera(g_camera);
+	z.render();
 	SDL_RenderPresent(g_renderer);
 
 }

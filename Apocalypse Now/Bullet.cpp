@@ -18,16 +18,16 @@ void apocalypsenow::Bullet::render()
 		switch (m_direction)
 		{
 		case Direction::LEFT:
-			g_bulletTextureLeft.render(m_box.x - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
+			g_bulletTextureLeft.render(m_box.x  - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
 			break;
 		case Direction::RIGHT:
 			g_bulletTextureRight.render(m_box.x - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
 			break;
 		case Direction::TOP:
-			g_bulletTextureTop.render(m_box.x - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
+			g_bulletTextureTop.render(m_box.x   - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
 			break;
 		case Direction::BOTTOM:
-			g_bulletTextureBot.render(m_box.x - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
+			g_bulletTextureBot.render(m_box.x   - g_camera.x, m_box.y - g_camera.y, &g_bulletClip);
 			break;
 		}
 	}

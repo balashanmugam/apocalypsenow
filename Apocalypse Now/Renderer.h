@@ -47,7 +47,7 @@ namespace apocalypsenow {
 		// if this flag is set to true, the game has ended.
 		bool m_exit;
 
-		//Protagonist hero;
+		//Player hero;
 	
 	public:
 

@@ -3,6 +3,7 @@
 #define _GAMEOBJECT_H_
 #include <SDL.h>
 #include "Tile.h"
+
 namespace apocalypsenow
 { 
 	class Tile;
@@ -11,7 +12,7 @@ namespace apocalypsenow
 		LEFT,
 		BOTTOM,
 		RIGHT,
-		TOP
+		TOP 
 	};
 
 	// Base class for all objects to be spawned inside the map/screen.

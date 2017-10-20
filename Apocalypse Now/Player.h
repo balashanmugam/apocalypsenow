@@ -13,42 +13,38 @@
 
 namespace apocalypsenow {
 
-	//extern Tile* tiles[TILE_TYPES];4
-
 	class Texture;
 	class Tile;
 
+	const int DIRECTION_TOTAL = 4;
+	const int PLAYER_TOTAL_FRAMES = 10;
 
-	//bool touchesWall(SDL_Rect box, Tile* tiles[]);
+	const int PLAYER_WIDTH = 60;
+	const int PLAYER_HEIGHT = 60;
 
-	const int PROT_WALKING_DIRECTION = 4;
-	const int PROT_TOTAL_FRAMES = 10;
+	const int PLAYER_VELOCITY = 3;
 
-	const int PROT_WIDTH = 60;
-	const int PROT_HEIGHT = 60;
-
-	const int PROT_SPEED = 3;
-
-	extern Texture g_protagonistTextureTop;
-	extern Texture g_protagonistTextureBot;
-	extern Texture g_protagonistTextureLeft;
-	extern Texture g_protagonistTextureRight;
-	extern SDL_Rect g_protagonistClips[PROT_WALKING_DIRECTION][PROT_TOTAL_FRAMES];
+	extern Texture g_playerTextureTop;
+	extern Texture g_playerTextureBot;
+	extern Texture g_playerTextureLeft;
+	extern Texture g_playerTextureRight;
+	extern SDL_Rect g_playerClips[DIRECTION_TOTAL][PLAYER_TOTAL_FRAMES];
 
 	extern Tile* tiles[192];
 
-	// PROT aka Protagonist.
-	class Protagonist: public GameObject
+	// PROT aka Player.
+	class Player: public GameObject
 	{
 	private:
 		std::string m_name;
 
 		int m_frame;
+		int m_hitsTaken;
 
 	public:
-		//Protagonist();
+		//Player();
 
-		Protagonist(int t_x, int tx_y);
+		Player(int t_x, int tx_y);
 		
 		//Handle events 
 		void handleEvents(SDL_Event& e);

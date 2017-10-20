@@ -11,8 +11,12 @@ apocalypsenow::GameObject::GameObject(SDL_Rect box, Direction d, int velX,int ve
 	m_direction = d;
 	m_velX = velX;
 	m_velY = velY;
-	m_isAlive = true; // For players it is health. For bullets it's presence, For zombies it is their life.// Oh wait. Zombies don't have health.
+	
+	// For players it is health. For bullets it's presence, For zombies it is their life.
+	// Oh wait. Zombies don't have life.
 
+	m_isAlive = true; 
+	
 }
 
 apocalypsenow::GameObject::~GameObject()
@@ -38,8 +42,6 @@ bool apocalypsenow::GameObject::collision(SDL_Rect box)
 	rightB = box.x + box.w;
 	topB = box.y;
 	botB = box.y + box.h;
-
-
 	if (botA <= topB)
 	{
 		return false;

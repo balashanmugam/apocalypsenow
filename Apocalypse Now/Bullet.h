@@ -8,7 +8,7 @@
 #include "Texture.h"
 #include "Tile.h"
 #include "Timer.h"
-#include "Protagonist.h"
+#include "Player.h"
 
 
 namespace apocalypsenow{
@@ -20,7 +20,7 @@ namespace apocalypsenow{
 	const int BULLET_HEIGHT = 25;
 	
 	// bullet velocity.
-	const int BULLET_VELOCITY = 7;
+	const int BULLET_VELOCITY = 8;
 
 	extern Texture g_bulletTextureLeft;
 	extern Texture g_bulletTextureBot;
