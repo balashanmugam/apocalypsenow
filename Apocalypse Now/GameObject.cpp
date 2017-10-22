@@ -60,11 +60,6 @@ bool apocalypsenow::GameObject::collision(SDL_Rect box)
 	}
 	return true;
 }
-bool apocalypsenow::GameObject::collision(GameObject* t_object)
-{
-	return collision(t_object->m_box);
-}
-
 bool apocalypsenow::GameObject::touchesWall(Tile* tiles[])
 {
 	// go though each tile

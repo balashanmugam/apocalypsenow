@@ -9,11 +9,11 @@ apocalypsenow::Player::Player(int t_x, int t_y)
 {
 	m_box.x = t_x;
 	m_box.y = t_y;
-	m_box.h = PLAYER_HEIGHT;// -15;
-	m_box.w = PLAYER_WIDTH;// -15;
+	m_box.h = PLAYER_HEIGHT -15;
+	m_box.w = PLAYER_WIDTH -15;
 
 	m_frame = 0;
-	m_hitsTaken = 0;
+	m_health = 5;
 
 	m_direction = Direction::RIGHT;
 }
@@ -139,14 +139,14 @@ void apocalypsenow::Player::move(Tile* tiles[])
 
 	m_box.y += m_velY;
 
-	for (int i = 0; i < m_velX; i++)
+	for (int i = 0; i < m_velY; i++)
 	{
 		if (i == 0)
 			m_frame++;
 		if (m_frame >= PLAYER_TOTAL_FRAMES)
 			m_frame = 0;
 	}
-	for (int i = 0; i < (-1 * m_velX); i++)
+	for (int i = 0; i < (-1 * m_velY); i++)
 	{
 		if (i == 0)
 			m_frame++;

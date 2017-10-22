@@ -22,7 +22,7 @@ namespace apocalypsenow {
 	const int PLAYER_WIDTH = 60;
 	const int PLAYER_HEIGHT = 60;
 
-	const int PLAYER_VELOCITY = 3;
+	const int PLAYER_VELOCITY = 2;
 
 	extern Texture g_playerTextureTop;
 	extern Texture g_playerTextureBot;
@@ -39,7 +39,7 @@ namespace apocalypsenow {
 		std::string m_name;
 
 		int m_frame;
-		int m_hitsTaken;
+		int m_health;
 
 	public:
 		//Player();

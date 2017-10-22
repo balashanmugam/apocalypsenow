@@ -2,18 +2,19 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Zombie.h"
+#include "MainMenu.h"
 
 
 namespace apocalypsenow
 {
-
+	MainMenu menu;
 	// Global timer
 	Timer timeelapsed;
 
 	// Test protagonist
-	Player hero(40,40);
-	Bullet b[999];
-	Zombie z;
+	Player hero(15,15);
+	Bullet b[BULLET_MAX];
+	Zombie z[ZOMBIE_MAX];
 
 	int g_bulletIndex = 0;
 
@@ -34,6 +35,11 @@ namespace apocalypsenow
 	Texture g_zombieBot;
 	Texture g_zombieRight;
 	Texture g_zombieTop;
+
+	// MainMenu textures;
+	Texture g_playOutTexture;
+	Texture g_playHoverTexture;
+	Texture g_playDownTexture;
 
 	// global variables;
 	Texture g_tileTexture;
@@ -68,6 +74,8 @@ apocalypsenow::Renderer::Renderer()
 bool apocalypsenow::Renderer::init()
 {
 	bool success = true;
+
+	m_state = GameState::MENU;
 
 
 	// Initializes SDL subsystem.
@@ -125,7 +133,9 @@ bool apocalypsenow::Renderer::init()
 	SDL_RenderClear(g_renderer);
 
 	// random spawn zombies.
-	z.spawn(40, 120);
+	for(auto i = 0 ; i < ZOMBIE_MAX; i++)
+		z[i].spawn(240, 320);
+
 	return success;
 }
 
@@ -169,6 +179,9 @@ void apocalypsenow::Renderer::test_loadLevel()
 	if (!g_zombieBot.loadTexture("resources/images/test/zombie_bot.png"))
 		errorfile << "Zombie Texture loading failed: Unable to load sprite sheet." << std::endl;
 
+	// Loading MainMenu textures.
+
+
 	// Clipping each frame of the protagonist. 
 	for (auto j = 0; j < DIRECTION_TOTAL; j++)
 	{
@@ -191,7 +204,7 @@ void apocalypsenow::Renderer::test_loadLevel()
 			g_zombieClips[j][i].w = ZOMBIE_WIDTH;
 		}
 	}
-	std::ifstream testmap("test.map");
+	std::ifstream testmap("test3.map");
 	
 	int x = 0;
 	int y = 0;
@@ -307,7 +320,28 @@ void apocalypsenow::Renderer::update()
 	hero.update();
 	for(auto i = 0;i < g_bulletIndex;i++)
 		b[i].update();
-	z.update();
+	for (auto i = 0; i < ZOMBIE_MAX; i++)
+		z[i].update();
+}
+
+void apocalypsenow::Renderer::loadMainMenu()
+{
+
+	if (!g_playDownTexture.loadTexture("resources/images/Mainmenu/test_button_down.png"))
+		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
+	if (!g_playHoverTexture.loadTexture("resources/images/Mainmenu/test_button_hover.png"))
+		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
+	if (!g_playOutTexture.loadTexture("resources/images/Mainmenu/test_button_out.png"))
+		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
+
+	menu.setState(m_state);
+	menu.init();
+
+}
+
+void apocalypsenow::Renderer::setState(GameState state_)
+{
+	m_state = state_;
 }
 
 void apocalypsenow::Renderer::refreshLevel()
@@ -322,6 +356,7 @@ void apocalypsenow::Renderer::refreshLevel()
 // Will handle close and keyboard press events.
 void apocalypsenow::Renderer::handleEvents()
 {
+	GameState nextState;
 	
 	while (SDL_PollEvent(&m_event))
 	{
@@ -338,11 +373,15 @@ void apocalypsenow::Renderer::handleEvents()
 			case SDLK_SPACE:
 				b[g_bulletIndex].fireBullet(hero.getBox().x, hero.getBox().y, hero.getDirection());
 				g_bulletIndex++;
-				if (g_bulletIndex >= 999)
+				if (g_bulletIndex >= BULLET_MAX)
 					g_bulletIndex = 0;
 				break;
 			}
 		}
+		// Menu event handling
+
+		if(m_state == GameState::MENU)
+			menu.handleEvent(&m_event,&m_state);
 		// hero.
 		hero.handleEvents(m_event);
 	}
@@ -376,8 +415,8 @@ void apocalypsenow::Renderer::render()
 		b[i].render();
 	hero.render(g_camera);
 	hero.setCamera(g_camera);
-	z.render();
-	SDL_RenderPresent(g_renderer);
+	for(auto i = 0;i < ZOMBIE_MAX;i++)
+		z[i].render();
 
 }
 
@@ -385,13 +424,25 @@ void apocalypsenow::Renderer::execute()
 {
 	init();
 	test_loadLevel();
+	loadMainMenu();
 
 	while (this->getExit() != true)
 	{
-		update();
-		render();
+		switch (m_state)
+		{
+		case GameState::MENU:
+			menu.render();
+			break;
+		case GameState::PLAYING:
+			update();
+			render();
+			break;
+		}
+
 		handleEvents();
-	} 
+		SDL_RenderPresent(g_renderer);
+
+	}
 	cleanup();
 }
 

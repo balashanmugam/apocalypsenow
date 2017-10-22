@@ -33,6 +33,12 @@ void apocalypsenow::Bullet::render()
 	}
 }
 
+void apocalypsenow::Bullet::destroy()
+{
+	if (m_isAlive)
+		m_isAlive = false;
+}
+
 void apocalypsenow::Bullet::update()
 {
 	if (m_isAlive)

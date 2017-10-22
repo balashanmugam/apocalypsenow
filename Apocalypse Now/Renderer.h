@@ -17,7 +17,11 @@
 // Also, this class will contain the GAME LOOP
 namespace apocalypsenow {
 
-
+	enum GameState {
+		MENU,
+		PLAYING,
+		GAMEOVER
+	};
 	extern SDL_Renderer* g_renderer;
 	extern std::fstream errorfile;
 	extern std::ifstream test;
@@ -43,6 +47,7 @@ namespace apocalypsenow {
 		SDL_Event m_event;
 	
 		SDL_Window* m_window;
+		GameState m_state;
 				
 		// if this flag is set to true, the game has ended.
 		bool m_exit;
@@ -62,7 +67,10 @@ namespace apocalypsenow {
 
 		void update();
 
-
+		// init Main menu
+		void loadMainMenu();
+		// Set the game state based on event handlers.
+		void setState(GameState state_);
 
 
 		// test function.

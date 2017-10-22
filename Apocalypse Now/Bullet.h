@@ -18,6 +18,8 @@ namespace apocalypsenow{
 	// bullet dimensions
 	const int BULLET_WIDTH = 25;
 	const int BULLET_HEIGHT = 25;
+
+	const int BULLET_MAX = 99;
 	
 	// bullet velocity.
 	const int BULLET_VELOCITY = 8;
@@ -51,6 +53,13 @@ namespace apocalypsenow{
 
 		// updates the location of the charracter
 		void update();
+
+		// return the status of the bullet.
+		bool isAlive() {
+			return m_isAlive;
+		}
+
+
 
 
 	};

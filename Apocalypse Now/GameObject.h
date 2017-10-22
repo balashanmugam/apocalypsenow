@@ -3,7 +3,6 @@
 #define _GAMEOBJECT_H_
 #include <SDL.h>
 #include "Tile.h"
-
 namespace apocalypsenow
 { 
 	class Tile;
@@ -29,11 +28,9 @@ namespace apocalypsenow
 		GameObject();
 		GameObject(SDL_Rect box, Direction d, int velX,int velY);
 		~GameObject();
-		bool collision(GameObject* t_object);
 		bool collision(SDL_Rect box);
-		bool touchesWall(Tile* tiles[]);
 
-		virtual void update() = 0;
+		bool touchesWall(Tile* tiles[]);
 		Direction getDirection()
 		{
 			return m_direction;
