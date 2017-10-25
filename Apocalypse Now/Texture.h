@@ -2,7 +2,7 @@
 #ifndef _TEXTURE_H_
 #define _TEXTURE_H_
 
-#include "Renderer.h"
+#include "GameManager.h"
 
 namespace apocalypsenow 
 {

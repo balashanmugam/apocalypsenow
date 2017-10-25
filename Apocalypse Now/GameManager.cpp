@@ -1,8 +1,10 @@
-#include "Renderer.h"
+#include "GameManager.h"
 #include "Player.h"
 #include "Bullet.h"
 #include "Zombie.h"
 #include "MainMenu.h"
+#include "DeadScreen.h"
+#include "Level.h"
 
 
 namespace apocalypsenow
@@ -11,8 +13,11 @@ namespace apocalypsenow
 	// Global timer
 	Timer timeelapsed;
 
+	//Levels
+	Level levels;
+
 	// Test protagonist
-	Player hero(15,15);
+	Player hero;
 	Bullet b[BULLET_MAX];
 	Zombie z[ZOMBIE_MAX];
 
@@ -41,6 +46,20 @@ namespace apocalypsenow
 	Texture g_playHoverTexture;
 	Texture g_playDownTexture;
 
+	Texture g_instructionOutTexture;
+	Texture g_instructionHoverTexture;
+	Texture g_instructionDownTexture;
+
+	Texture g_quitOutTexture;
+	Texture g_quitHoverTexture;
+	Texture g_quitDownTexture;
+
+	// game over Textures;
+	Texture g_gameover;
+
+	// Dead texture.
+	Texture g_deadScreenTexture;
+
 	// global variables;
 	Texture g_tileTexture;
 	Texture g_blockTileTexture;
@@ -60,18 +79,20 @@ namespace apocalypsenow
 
 	Tile* tiles[TILE_TOTAL];
 
+	DeadScreen screen;
 	//Multithreading. LOL
 
 }
 //Constructor
-apocalypsenow::Renderer::Renderer()
+apocalypsenow::GameManager::GameManager()
 {
 	m_exit = false;
 	apocalypsenow::errorfile.open("errorFile.txt");
+
 }
 
 // Loads the subsystems, creates window, apocalypsenow::Renderer ...
-bool apocalypsenow::Renderer::init()
+bool apocalypsenow::GameManager::init()
 {
 	bool success = true;
 
@@ -136,13 +157,6 @@ bool apocalypsenow::Renderer::init()
 	for(auto i = 0 ; i < ZOMBIE_MAX; i++)
 		z[i].spawn(240, 320);
 
-	return success;
-}
-
-
-
-void apocalypsenow::Renderer::test_loadLevel()
-{
 	// Loading map related textures
 	if (!g_tileTexture.loadTexture("resources/images/test/Map2.png"))
 		errorfile << "Fail in loading test tile" << std::endl;
@@ -152,7 +166,7 @@ void apocalypsenow::Renderer::test_loadLevel()
 	// Loading player sprites.
 	if (!g_playerTextureTop.loadTexture("resources/images/test/test_sprite_top.png"))
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
-	if (!g_playerTextureBot.loadTexture("resources/images/test/test_sprite_bot.png"))
+	if (!g_playerTextureBot.loadTexture("resources/images/test/test_sprite_down.png"))
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
 	if (!g_playerTextureLeft.loadTexture("resources/images/test/test_sprite_left.png"))
 		errorfile << "TEXTURE LOADING FAILED: Unable to load Sprite sheet of character walk." << std::endl;
@@ -168,7 +182,7 @@ void apocalypsenow::Renderer::test_loadLevel()
 		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
 	if (!g_bulletTextureBot.loadTexture("resources/images/test/bulletf_bot.png"))
 		errorfile << "BULLET TEXTURE LAODING FAILED: Unable to load sprite sheet of bullet." << std::endl;
-	
+
 	//Loading zombie textures.
 	if (!g_zombieLeft.loadTexture("resources/images/test/zombie_left.png"))
 		errorfile << "Zombie Texture loading failed: Unable to load sprite sheet." << std::endl;
@@ -181,6 +195,25 @@ void apocalypsenow::Renderer::test_loadLevel()
 
 	// Loading MainMenu textures.
 
+	// Play button texture
+	if (!g_playDownTexture.loadTexture("resources/images/Mainmenu/test_button_down.png"))
+		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
+	if (!g_playHoverTexture.loadTexture("resources/images/Mainmenu/test_button_hover.png"))
+		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
+	if (!g_playOutTexture.loadTexture("resources/images/Mainmenu/test_button_out.png"))
+		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
+
+	// Out button
+	if (!g_quitOutTexture.loadTexture("resources/images/Mainmenu/quit_out.png"))
+		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
+	if (!g_quitDownTexture.loadTexture("resources/images/Mainmenu/quit_down.png"))
+		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
+	if (!g_quitHoverTexture.loadTexture("resources/images/Mainmenu/quit_hover.png"))
+		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
+
+	// game over screen.
+	if (!g_deadScreenTexture.loadTexture("resources/images/New folder/gameoverbg.png"))
+		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
 
 	// Clipping each frame of the protagonist. 
 	for (auto j = 0; j < DIRECTION_TOTAL; j++)
@@ -204,46 +237,6 @@ void apocalypsenow::Renderer::test_loadLevel()
 			g_zombieClips[j][i].w = ZOMBIE_WIDTH;
 		}
 	}
-	std::ifstream testmap("test3.map");
-	
-	int x = 0;
-	int y = 0;
-
-	if (testmap.fail() == true)
-	{
-		errorfile << "File Loading failed: Unable to load file." << std::endl;	
-	}
-	// load map.
-	for (auto i = 0; i < TILE_TOTAL; i++)
-	{
-		int tileType = -1;
-	
-		testmap >> tileType;
-		
-		if (testmap.fail())
-		{
-			errorfile << "File reading error: Unexpected end of file." << std::endl;
-			break;
-		}
-
-		// Check if it is a valid tile.
-		if ((tileType >= 0 && tileType < TILE_TYPES) || tileType == TILE_BLOCK)
-		{
-			tiles[i] = new Tile(x, y, tileType);
-
-		}
-
-		// Next horizontal tile location		
-		x += TILE_WIDTH;
-		
-		// if the tile reaches the end of the level width.
-		if (x >= LEVEL_WIDTH)
-		{
-			x = 0;
-			y += TILE_HEIGHT;
-		}
-
-	}
 
 	// Now clip
 	g_tileClip[TILE_TOPLEFT].x = 0;
@@ -260,7 +253,7 @@ void apocalypsenow::Renderer::test_loadLevel()
 	g_tileClip[TILE_BOTLEFT].y = 160;
 	g_tileClip[TILE_BOTLEFT].h = TILE_WIDTH;
 	g_tileClip[TILE_BOTLEFT].w = TILE_HEIGHT;
-	
+
 	g_tileClip[TILE_TOP].x = 80;
 	g_tileClip[TILE_TOP].y = 0;
 	g_tileClip[TILE_TOP].h = TILE_WIDTH;
@@ -301,51 +294,58 @@ void apocalypsenow::Renderer::test_loadLevel()
 	g_bulletClip.h = 25;
 	g_bulletClip.w = 25;
 
-	testmap.close();
-	for (auto i = 0; i < TILE_TOTAL; i++)
-	{
-		tiles[i]->render(g_camera);
-	}
+	m_level = 1;
 
-	SDL_RenderPresent(g_renderer);
+	return success;
+}
+
+
+
+void apocalypsenow::GameManager::loadLevel()
+{
+
+	// Load level
+	levels.setFileName("test3.map");
+	levels.loadLevel();
+	// load the players.
+	
+	
+
+
 
 }
-void apocalypsenow::Renderer::test_displaylevel()
+void apocalypsenow::GameManager::test_displaylevel()
 {
 
 
 }
-void apocalypsenow::Renderer::update()
+void apocalypsenow::GameManager::update()
 {
 	hero.update();
+	if (!hero.isAlive())
+		m_state = GameState::DEAD;
 	for(auto i = 0;i < g_bulletIndex;i++)
 		b[i].update();
 	for (auto i = 0; i < ZOMBIE_MAX; i++)
 		z[i].update();
 }
 
-void apocalypsenow::Renderer::loadMainMenu()
+void apocalypsenow::GameManager::loadMainMenu()
 {
-
-	if (!g_playDownTexture.loadTexture("resources/images/Mainmenu/test_button_down.png"))
-		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
-	if (!g_playHoverTexture.loadTexture("resources/images/Mainmenu/test_button_hover.png"))
-		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
-	if (!g_playOutTexture.loadTexture("resources/images/Mainmenu/test_button_out.png"))
-		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
-
 	menu.setState(m_state);
 	menu.init();
 
 }
 
-void apocalypsenow::Renderer::setState(GameState state_)
+void apocalypsenow::GameManager::setState(GameState state_)
 {
 	m_state = state_;
 }
 
-void apocalypsenow::Renderer::refreshLevel()
+void apocalypsenow::GameManager::refreshLevel()
 {
+
+	// update with render
 	for (auto i = 0; i < TILE_TOTAL; i++)
 	{
 		tiles[i]->render(g_camera);
@@ -354,15 +354,16 @@ void apocalypsenow::Renderer::refreshLevel()
 }
 
 // Will handle close and keyboard press events.
-void apocalypsenow::Renderer::handleEvents()
+void apocalypsenow::GameManager::handleEvents()
 {
-	GameState nextState;
+
 	
 	while (SDL_PollEvent(&m_event))
 	{
 		if (m_event.type == SDL_QUIT)
 		{
 			//exits.
+			m_state = GameState::GAMEOVER;
 			m_exit = true;
 			
 		}
@@ -371,7 +372,7 @@ void apocalypsenow::Renderer::handleEvents()
 			switch (m_event.key.keysym.sym)
 			{
 			case SDLK_SPACE:
-				b[g_bulletIndex].fireBullet(hero.getBox().x, hero.getBox().y, hero.getDirection());
+				b[g_bulletIndex].fireBullet(hero.getBox().x+15, hero.getBox().y + 10, hero.getDirection());
 				g_bulletIndex++;
 				if (g_bulletIndex >= BULLET_MAX)
 					g_bulletIndex = 0;
@@ -389,12 +390,13 @@ void apocalypsenow::Renderer::handleEvents()
 	
 }
 
-void apocalypsenow::Renderer::cleanup()
+void apocalypsenow::GameManager::cleanup()
 {
 	errorfile.close();
+	levels.close();
 
 }
-apocalypsenow::Renderer::~Renderer()
+apocalypsenow::GameManager::~GameManager()
 {
 	SDL_DestroyWindow(m_window);
 	
@@ -402,15 +404,15 @@ apocalypsenow::Renderer::~Renderer()
 	g_renderer = NULL;
 }
 
-bool apocalypsenow::Renderer::getExit() const
+bool apocalypsenow::GameManager::getExit() const
 {
 	return m_exit;
 }
 
 // Renders all the important textures and stuffs.
-void apocalypsenow::Renderer::render()
+void apocalypsenow::GameManager::render()
 {
-	refreshLevel();
+	levels.render();
 	for (auto i = 0; i < g_bulletIndex; i++)
 		b[i].render();
 	hero.render(g_camera);
@@ -420,13 +422,13 @@ void apocalypsenow::Renderer::render()
 
 }
 
-void apocalypsenow::Renderer::execute()
+void apocalypsenow::GameManager::execute()
 {
 	init();
-	test_loadLevel();
+	loadLevel();
 	loadMainMenu();
 
-	while (this->getExit() != true)
+	while (m_state != GAMEOVER)
 	{
 		switch (m_state)
 		{
@@ -437,8 +439,10 @@ void apocalypsenow::Renderer::execute()
 			update();
 			render();
 			break;
+		case GameState::DEAD:
+			screen.render();
+			break;
 		}
-
 		handleEvents();
 		SDL_RenderPresent(g_renderer);
 

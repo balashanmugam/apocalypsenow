@@ -3,7 +3,19 @@
 
 namespace apocalypsenow{
 	extern SDL_Rect g_camera;
-	extern Player hero;
+	extern Zombie z[ZOMBIE_MAX];
+}
+apocalypsenow::Player::Player()
+{
+	m_box.h = PLAYER_HEIGHT - 15;
+	m_box.w = PLAYER_WIDTH - 15;
+
+	m_frame = 0;
+	m_health = 50;
+
+	m_isAlive = true;
+
+	m_direction = Direction::RIGHT;
 }
 apocalypsenow::Player::Player(int t_x, int t_y)
 {
@@ -13,7 +25,9 @@ apocalypsenow::Player::Player(int t_x, int t_y)
 	m_box.w = PLAYER_WIDTH -15;
 
 	m_frame = 0;
-	m_health = 5;
+	m_health = 50;
+
+	m_isAlive = true;
 
 	m_direction = Direction::RIGHT;
 }
@@ -21,34 +35,54 @@ void apocalypsenow::Player::render(SDL_Rect& camera)
 {
 	SDL_Rect* currentFrame = &g_playerClips[m_direction][m_frame];
 	//apocalypsenow::errorfile << "Frame no: " << m_frame << std::endl;
-
-	switch (m_direction)
+	SDL_Color r;
+	r.r = 255;
+	r.g = 200;
+	r.b = 200;
+	if (m_isAlive)
 	{
-	case Direction::TOP:
-		g_playerTextureTop.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
-		break;
-	case Direction::BOTTOM:
-		g_playerTextureBot.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
-		break;
-	case Direction::LEFT:
-		g_playerTextureLeft.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
-		break;
-	case Direction::RIGHT:
-		g_playerTextureRight.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
-		break;
-	}
 
+		switch (m_direction)
+		{
+		case Direction::TOP:
+			g_playerTextureTop.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
+			//g_playerTextureTop.setColor(r);
+			break;
+		case Direction::BOTTOM:
+			g_playerTextureBot.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
+			break;
+		case Direction::LEFT:
+			g_playerTextureLeft.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
+			break;
+		case Direction::RIGHT:
+			g_playerTextureRight.render(m_box.x - camera.x, m_box.y - camera.y, currentFrame);
+			break;
+		}
 	if (m_frame >= PLAYER_TOTAL_FRAMES)
 		m_frame = 0;
+	}
+
+}
+
+void apocalypsenow::Player::setSpawn(apocalypsenow::Point p_)
+{
+	m_box.x = p_.x;
+	m_box.y = p_.y;
 }
 
 void apocalypsenow::Player::update()
 {
+
 	move(tiles);
+	if(m_health <= 0 )
+		m_isAlive = false;
+
+	
 }
 
 void apocalypsenow::Player::handleEvents(SDL_Event& e)
 {
+
 	if (e.type == SDL_KEYDOWN && e.key.repeat == 0 )
 	{
 		
@@ -105,6 +139,7 @@ void apocalypsenow::Player::handleEvents(SDL_Event& e)
 			break;
 		}
 	}
+
 }
 
 void apocalypsenow::Player::move(Tile* tiles[])
@@ -113,6 +148,7 @@ void apocalypsenow::Player::move(Tile* tiles[])
 	// if the character moves left/ right
 
 	m_box.x += m_velX;
+
 	
 	for (int i = 0; i < m_velX; i++)
 	{
@@ -134,6 +170,7 @@ void apocalypsenow::Player::move(Tile* tiles[])
 	{
 		m_box.x -= m_velX;
 	}
+
 
 	// if the character moves up and down
 
@@ -160,6 +197,25 @@ void apocalypsenow::Player::move(Tile* tiles[])
 	{
 		m_box.y -= m_velY;
 	}
+
+
+
+}
+
+bool apocalypsenow::Player::collisionWithZombies(Zombie * z_)
+{
+	bool flag = false;
+	for (auto i = 0; i < ZOMBIE_MAX; i++)
+	{
+		if (z_[i].isAlive() && collision(z_[i].getBox()))
+		{
+
+			flag = true;
+			break;
+		}
+	}
+	return flag;
+
 }
 
 void apocalypsenow::Player::setCamera(SDL_Rect& camera)

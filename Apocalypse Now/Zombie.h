@@ -1,22 +1,24 @@
 #pragma once
 #include "GameObject.h"
-#include "Player.h"
 #include "Bullet.h"
+#include "Player.h"
 
 namespace apocalypsenow {
 
-	const int ZOMBIE_MAX = 60;
+	const int ZOMBIE_MAX = 50;
 
 	const int FRAME_TIME = 50;
-	extern Player hero;
-	extern Bullet b[BULLET_MAX];
 
 	// zombie constants
 	const int ZOMBIE_HEIGHT = 60;
 	const int ZOMBIE_WIDTH = 60;
-	const int ZOMBIE_FRAMES = 6;
+	const int ZOMBIE_FRAMES = 10;
 	const int ZOMBIE_VELOCITY = 2;
+	const int ZOMBIE_FRAME_DIRECTIONS = 4;
+
+	// externals
 	extern Tile* tiles[192];
+	extern Bullet b[99];
 
 	// Textures.
 	extern Texture g_zombieLeft;
@@ -28,7 +30,7 @@ namespace apocalypsenow {
 	extern SDL_Rect g_camera;
 
 	// Zombie clipper.
-	extern SDL_Rect g_zombieClips[4][ZOMBIE_FRAMES];
+	extern SDL_Rect g_zombieClips[ZOMBIE_FRAME_DIRECTIONS][ZOMBIE_FRAMES];
 
 
 	class Zombie:public GameObject
@@ -50,6 +52,10 @@ namespace apocalypsenow {
 
 		void spawn(int x_,int y_);
 		void roam(Tile** tiles);
+
+		bool isAlive() {
+			return m_isAlive;
+		}
 	};
 
 }

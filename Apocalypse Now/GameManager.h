@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _RENDERER_H_
-#define _RENDERER_H_
+#ifndef _GAMEMANAGER_H_
+#define _GAMEMANAGER_H_
 
 #include <SDL.h>
 #include <SDL_ttf.h>
@@ -20,6 +20,8 @@ namespace apocalypsenow {
 	enum GameState {
 		MENU,
 		PLAYING,
+		WIN,
+		DEAD,
 		GAMEOVER
 	};
 	extern SDL_Renderer* g_renderer;
@@ -29,8 +31,8 @@ namespace apocalypsenow {
 	//SDL_Renderer* g_bulletRenderer;
 
 	// Screens constants
-	const int SCREEN_WIDTH = 640;
-	const int SCREEN_HEIGHT = 480;
+	const int SCREEN_WIDTH = 400;
+	const int SCREEN_HEIGHT = 320;
 
 	const int SCREEN_FPS = 60;
 	const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
@@ -39,7 +41,7 @@ namespace apocalypsenow {
 
 	class Bullet;
 
-	class Renderer
+	class GameManager
 	{
 	private:
 		// Screen dimensions
@@ -52,15 +54,18 @@ namespace apocalypsenow {
 		// if this flag is set to true, the game has ended.
 		bool m_exit;
 
+		// current level.
+		unsigned int m_level;
+
 		//Player hero;
 	
 	public:
 
 		// Initializes member variables.
-		Renderer();
+		GameManager();
 
 		// Deallocates memory in the member variable (Pointers)
-		~Renderer();
+		~GameManager();
 	
 		// Initializes all the necessary modules.
 		bool init();
@@ -75,7 +80,7 @@ namespace apocalypsenow {
 
 		// test function.
 
-		void test_loadLevel();
+		void loadLevel();
 
 		void test_displaylevel();
 		// Refreshed the sprites of the level.

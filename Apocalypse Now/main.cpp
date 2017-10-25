@@ -1,8 +1,8 @@
-#include "Renderer.h"
+#include "GameManager.h"
 
 int main(int argc, char** argv)
 {
-	apocalypsenow::Renderer game;
+	apocalypsenow::GameManager game;
 	game.execute();
 	
 	//system("PAUSE");

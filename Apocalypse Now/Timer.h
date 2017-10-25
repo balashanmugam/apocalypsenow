@@ -2,7 +2,7 @@
 #ifndef _TIMER_H_
 #define _TIMER_H_
 
-#include "Renderer.h"
+#include "GameManager.h"
 
 namespace apocalypsenow
 {

@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL.h>
-#include "Renderer.h"
+#include "GameManager.h"
 #include "Button.h"
 namespace apocalypsenow
 {
@@ -8,10 +8,20 @@ namespace apocalypsenow
 	extern Texture g_playHoverTexture;
 	extern Texture g_playDownTexture;
 
+	extern Texture g_instructionOutTexture;
+	extern Texture g_instructionHoverTexture;
+	extern Texture g_instructionDownTexture;
+
+	extern Texture g_quitOutTexture;
+	extern Texture g_quitHoverTexture;
+	extern Texture g_quitDownTexture;
+
 	class MainMenu
 	{
 	private:
 		Button m_playButton;
+		Button m_instructionButton;
+		Button m_quitButton;
 		GameState m_state;
 	public:
 		MainMenu(GameState* state_);

@@ -1,7 +1,7 @@
 #pragma once
 #ifndef _TILE_H_
 #define _TILE_H_
-#include "Renderer.h"
+#include "GameManager.h"
 namespace apocalypsenow
 {
 	bool checkCollision(SDL_Rect a, SDL_Rect b);

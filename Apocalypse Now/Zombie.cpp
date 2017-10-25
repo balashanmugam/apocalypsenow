@@ -5,6 +5,7 @@
 #include "Tile.h"
 namespace apocalypsenow{
 
+	extern Player hero;
 	// Creates a random direction
 	int randomDistribution()
 	{
@@ -140,6 +141,8 @@ void apocalypsenow::Zombie::roam(Tile** tiles)
 			else if (collision(hero.getBox()))
 			{
 				// knock back
+				hero.decreaseHealth();
+
 				m_box.x -= 20 * ZOMBIE_VELOCITY;
 			
 			}
@@ -174,12 +177,14 @@ void apocalypsenow::Zombie::roam(Tile** tiles)
 			{
 				// knock back
 				m_box.x += 20 * ZOMBIE_VELOCITY;
+				hero.decreaseHealth();
 			}
 			else if (collisionWithbullet(b))
 			{
 				m_box.x += 20 * ZOMBIE_VELOCITY;
 				m_health--;
 			}
+
 			break;
 		case Direction::BOTTOM:
 			m_box.y += ZOMBIE_VELOCITY;
@@ -204,6 +209,8 @@ void apocalypsenow::Zombie::roam(Tile** tiles)
 			else if (collision(hero.getBox()))
 			{
 				// knock back
+				hero.decreaseHealth();
+
 				m_box.y -= 20 * ZOMBIE_VELOCITY;
 			}
 			else if (collisionWithbullet(b))
@@ -237,6 +244,8 @@ void apocalypsenow::Zombie::roam(Tile** tiles)
 			{
 				// knock back
 				m_box.y += 20 * ZOMBIE_VELOCITY;
+				hero.decreaseHealth();
+
 			}
 			else if (collisionWithbullet(b))
 			{
