@@ -13,6 +13,31 @@ apocalypsenow::Level::~Level()
 {
 }
 
+void apocalypsenow::Level::setZombieSpawns(Point * p_)
+{
+	for (auto i = 0; i < ZOMBIE_SPAWNS; i++)
+	{
+		m_zombieSpawn[i].x = p_[i].x;
+		m_zombieSpawn[i].y = p_[i].y;
+	}
+}
+
+void apocalypsenow::Level::setKeySpawns(Point * p_)
+{
+	for (auto i = 0; i < KEY_COUNT; i++)
+	{
+		m_keySpawn[i].x = p_[i].x;
+		m_keySpawn[i].y = p_[i].y;
+	}
+}
+
+void apocalypsenow::Level::setPlayerSpawn(int x_, int y_)
+{
+	m_playerSpawn.x = x_;
+	m_playerSpawn.y = y_;
+}
+
+
 void apocalypsenow::Level::loadLevel()
 {
 	std::ifstream m_map(m_fileName);
@@ -38,7 +63,7 @@ void apocalypsenow::Level::loadLevel()
 		}
 
 		// Check if it is a valid tile.
-		if ((tileType >= 0 && tileType < TILE_TYPES) || tileType == TILE_BLOCK)
+		if ((tileType >= 0 && tileType < TILE_TYPES) || tileType == TILE_BLOCK || tileType == TILE_EXIT)
 		{
 			tiles[i] = new Tile(x, y, tileType);
 
@@ -60,6 +85,16 @@ void apocalypsenow::Level::loadLevel()
 apocalypsenow::Point apocalypsenow::Level::getPlayerSpawn()
 {
 	return m_playerSpawn;
+}
+
+apocalypsenow::Point* apocalypsenow::Level::getKeySpawn()
+{
+	return m_keySpawn;
+}
+
+apocalypsenow::Point * apocalypsenow::Level::getZombieSpawns()
+{
+	return m_zombieSpawn;
 }
 
 void apocalypsenow::Level::render()

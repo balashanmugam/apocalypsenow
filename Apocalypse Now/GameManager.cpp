@@ -5,7 +5,8 @@
 #include "MainMenu.h"
 #include "DeadScreen.h"
 #include "Level.h"
-
+#include "Key.h"
+#include "WinScreen.h"
 
 namespace apocalypsenow
 {
@@ -16,12 +17,18 @@ namespace apocalypsenow
 	//Levels
 	Level levels;
 
+	// Keys
+	Key keys[KEY_COUNT];
+
 	// Test protagonist
 	Player hero;
 	Bullet b[BULLET_MAX];
-	Zombie z[ZOMBIE_MAX];
+	Zombie z[ZOMBIE_SPAWNS][ZOMBIE_MAX];
 
 	int g_bulletIndex = 0;
+
+	// Exit texture
+	Texture g_exitTexture;
 
 	// Test Textures
 	Texture g_playerTextureLeft;
@@ -46,16 +53,20 @@ namespace apocalypsenow
 	Texture g_playHoverTexture;
 	Texture g_playDownTexture;
 
-	Texture g_instructionOutTexture;
-	Texture g_instructionHoverTexture;
-	Texture g_instructionDownTexture;
-
 	Texture g_quitOutTexture;
 	Texture g_quitHoverTexture;
 	Texture g_quitDownTexture;
 
+	Texture g_mainMenuTexture;
+
+	// Key
+	Texture g_keyTexture;
+
 	// game over Textures;
 	Texture g_gameover;
+
+	//game win texture
+	Texture g_gameWin;
 
 	// Dead texture.
 	Texture g_deadScreenTexture;
@@ -80,7 +91,7 @@ namespace apocalypsenow
 	Tile* tiles[TILE_TOTAL];
 
 	DeadScreen screen;
-	//Multithreading. LOL
+	WinScreen win;
 
 }
 //Constructor
@@ -153,15 +164,13 @@ bool apocalypsenow::GameManager::init()
 	SDL_SetRenderDrawColor(g_renderer, 255,255, 255, 255);
 	SDL_RenderClear(g_renderer);
 
-	// random spawn zombies.
-	for(auto i = 0 ; i < ZOMBIE_MAX; i++)
-		z[i].spawn(240, 320);
-
 	// Loading map related textures
 	if (!g_tileTexture.loadTexture("resources/images/test/Map2.png"))
 		errorfile << "Fail in loading test tile" << std::endl;
 	if (!g_blockTileTexture.loadTexture("resources/images/test/Map3.png"))
 		errorfile << "Fail in block texture tile" << std::endl;
+	if (!g_exitTexture.loadTexture("resources/images/test/trapdoor.png"))
+		errorfile << "Failed to load trap door." << std::endl;
 
 	// Loading player sprites.
 	if (!g_playerTextureTop.loadTexture("resources/images/test/test_sprite_top.png"))
@@ -195,12 +204,15 @@ bool apocalypsenow::GameManager::init()
 
 	// Loading MainMenu textures.
 
+	if (!g_mainMenuTexture.loadTexture("resources/images/Mainmenu/menu.png"))
+		errorfile << "MENU TEXTURE FAILED: Unable to load texture." << std::endl;
+
 	// Play button texture
 	if (!g_playDownTexture.loadTexture("resources/images/Mainmenu/test_button_down.png"))
 		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
 	if (!g_playHoverTexture.loadTexture("resources/images/Mainmenu/test_button_hover.png"))
 		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
-	if (!g_playOutTexture.loadTexture("resources/images/Mainmenu/test_button_out.png"))
+	if (!g_playOutTexture.loadTexture("resources/images/Mainmenu/test_button_down.png"))
 		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
 
 	// Out button
@@ -212,8 +224,17 @@ bool apocalypsenow::GameManager::init()
 		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
 
 	// game over screen.
-	if (!g_deadScreenTexture.loadTexture("resources/images/New folder/gameoverbg.png"))
-		errorfile << "BUTTON TEXTURE FAILED: Unable to load texture." << std::endl;
+	if (!g_deadScreenTexture.loadTexture("resources/images/Screen/deadscreen.png"))
+		errorfile << "Dead TEXTURE FAILED: Unable to load texture." << std::endl;
+
+	// game win screen
+	if (!g_gameWin.loadTexture("resources/images/Screen/gamewin.png"))
+		errorfile << "WIN TEXTURE FAILED: Unable to load texture." << std::endl;
+
+	// key texture
+	if (!g_keyTexture.loadTexture("resources/images/Key/key.png"))
+		errorfile << "KEY TEXTURE FAILED: Unable to load texture." << std::endl;
+
 
 	// Clipping each frame of the protagonist. 
 	for (auto j = 0; j < DIRECTION_TOTAL; j++)
@@ -307,11 +328,44 @@ void apocalypsenow::GameManager::loadLevel()
 	// Load level
 	levels.setFileName("test3.map");
 	levels.loadLevel();
+
+	Point keyspawn[KEY_COUNT];
+	keyspawn[0].x = 0;	keyspawn[0].y = 240;
+	keyspawn[1].x = 880;	keyspawn[1].y = 880;
+	keyspawn[2].x = 880;	keyspawn[2].y = 160;
+
+	Point zombieSpawn[ZOMBIE_MAX];
+	zombieSpawn[0].x = 160; zombieSpawn[0].y = 160;
+	zombieSpawn[1].x = 720; zombieSpawn[1].y = 160;
+	zombieSpawn[2].x = 880; zombieSpawn[2].y = 480;
+
+	// Setting players spawn.
+	levels.setPlayerSpawn(0, 480);
+
+	levels.setKeySpawns(keyspawn);
+	levels.setZombieSpawns(zombieSpawn);
 	// load the players.
-	
-	
 
 
+
+	hero.setSpawn(levels.getPlayerSpawn());
+
+	// setting the key locations
+	
+	for (auto i = 0; i < KEY_COUNT; i++)
+	{
+		keys[i].spawnAt(levels.getKeySpawn()[i].x, levels.getKeySpawn()[i].y);
+
+	}
+	// Load the Zombies 
+	// 3 Different spawn points
+	for (auto i = 0; i < ZOMBIE_SPAWNS; i++)
+	{
+		for (auto j = 0; j < ZOMBIE_MAX; j++)
+		{
+			z[i][j].spawn(levels.getZombieSpawns()[i].x, levels.getZombieSpawns()[i].y);
+		}
+	}
 
 }
 void apocalypsenow::GameManager::test_displaylevel()
@@ -324,10 +378,18 @@ void apocalypsenow::GameManager::update()
 	hero.update();
 	if (!hero.isAlive())
 		m_state = GameState::DEAD;
+	if (hero.isWin())
+		m_state = GameState::WIN;
 	for(auto i = 0;i < g_bulletIndex;i++)
 		b[i].update();
-	for (auto i = 0; i < ZOMBIE_MAX; i++)
-		z[i].update();
+	for (auto j = 0; j < ZOMBIE_SPAWNS; j++) {
+		for (auto i = 0; i < ZOMBIE_MAX; i++)
+			z[j][i].update();
+	}
+	for (auto i = 0; i < KEY_COUNT; i++)
+		keys[i].update();
+
+
 }
 
 void apocalypsenow::GameManager::loadMainMenu()
@@ -417,9 +479,12 @@ void apocalypsenow::GameManager::render()
 		b[i].render();
 	hero.render(g_camera);
 	hero.setCamera(g_camera);
-	for(auto i = 0;i < ZOMBIE_MAX;i++)
-		z[i].render();
-
+	for (auto j = 0; j < ZOMBIE_SPAWNS; j++) {
+		for (auto i = 0; i < ZOMBIE_MAX; i++)
+			z[j][i].render();
+	}
+	for (auto i = 0; i < KEY_COUNT; i++)
+		keys[i].render();
 }
 
 void apocalypsenow::GameManager::execute()
@@ -440,7 +505,12 @@ void apocalypsenow::GameManager::execute()
 			render();
 			break;
 		case GameState::DEAD:
-			screen.render();
+			screen .render();
+			break;
+		case GameState::WIN:
+			// currently render some bullshit.
+			// Proceed to next level.
+			win.render();
 			break;
 		}
 		handleEvents();

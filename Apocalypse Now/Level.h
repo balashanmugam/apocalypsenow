@@ -33,10 +33,17 @@ namespace apocalypsenow {
 		Level();
 		~Level();
 
+		void setZombieSpawns(Point* p_);
+
+		void setKeySpawns(Point* p_);
+		void setPlayerSpawn(int x_, int y_);
+
 		void loadLevel();
 		void loadNextLevel();
 
 		Point getPlayerSpawn();
+		Point* getKeySpawn();
+		Point* getZombieSpawns();
 
 		void render();
 		void setFileName(std::string filename_);

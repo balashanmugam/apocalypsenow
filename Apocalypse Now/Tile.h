@@ -6,11 +6,12 @@ namespace apocalypsenow
 {
 	bool checkCollision(SDL_Rect a, SDL_Rect b);
 
+
 	// Global constant for tiles.
 
 	const int TILE_WIDTH = 80;
 	const int TILE_HEIGHT = 80;
-	const int TILE_TYPES = 10;
+	const int TILE_TYPES = 11;
 	const int TILE_TOTAL = 192;
 
 	// These tiles are only for testing purposes.
@@ -30,6 +31,8 @@ namespace apocalypsenow
 	const int TILE_RIGHT = 7;
 	const int TILE_BOTRIGHT = 8;
 	const int TILE_BLOCK = 99;
+	const int TILE_EXIT = 50; //random number 
+
 
 	const int LEVEL_WIDTH = 1280;
 	const int LEVEL_HEIGHT = 960;

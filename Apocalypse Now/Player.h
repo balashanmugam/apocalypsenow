@@ -27,15 +27,13 @@ namespace apocalypsenow {
 
 	const int PLAYER_VELOCITY = 2;
 
-
-
 	extern Texture g_playerTextureTop;
 	extern Texture g_playerTextureBot;
 	extern Texture g_playerTextureLeft;
 	extern Texture g_playerTextureRight;
 	extern SDL_Rect g_playerClips[DIRECTION_TOTAL][PLAYER_TOTAL_FRAMES];
 
-	extern Tile* tiles[192];
+	extern Tile* tiles[TILE_TOTAL];
 
 	// PROT aka Player.
 	class Player: public GameObject
@@ -45,6 +43,10 @@ namespace apocalypsenow {
 
 		int m_frame;
 		int m_health;
+		int m_keys;
+		bool m_win;
+		// to check collision in the exit . // trap door
+		bool touchesTrapdoor(Tile** tiles);
 
 	public:
 		Player();
@@ -74,11 +76,21 @@ namespace apocalypsenow {
 			m_health--;
 		}
 
+		// collecting a key
+		void incrementKeyCount() {
+			m_keys++;
+		}
+
 		// updates the location of the charracter
 		void update();
 
+		//returns the 
 		bool isAlive() {
 			return m_isAlive;
+		}
+
+		bool isWin() {
+			return m_win;
 		}
 	
 	

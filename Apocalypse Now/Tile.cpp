@@ -7,6 +7,7 @@ namespace apocalypsenow
 	extern SDL_Rect g_tileClip[TILE_TYPES];
 	extern SDL_Rect g_blockTileClip;
 	extern Texture g_blockTileTexture;
+	extern Texture g_exitTexture;
 }
 apocalypsenow::Tile::Tile(int t_x, int t_y, int t_tileType)
 {
@@ -28,6 +29,8 @@ void apocalypsenow::Tile::render(SDL_Rect& t_camera)
 
 		if(m_type == TILE_BLOCK)
 			g_blockTileTexture.render(m_box.x - t_camera.x, m_box.y - t_camera.y, &g_blockTileClip);
+		else if (m_type == TILE_EXIT)
+			g_exitTexture.render(m_box.x - t_camera.x, m_box.y - t_camera.y);
 	}
 }
 

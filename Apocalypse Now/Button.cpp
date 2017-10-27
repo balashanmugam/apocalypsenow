@@ -89,20 +89,6 @@ void apocalypsenow::Button::render()
 			break;
 		}
 		break;
-	case INSTRUCTIONS:
-		switch(m_state)
-		{
-		case MOUSE_DOWN:
-			g_instructionDownTexture.render(m_point.x, m_point.y);
-			break;
-		case MOUSE_HOVER:
-			g_instructionHoverTexture.render(m_point.x, m_point.y);
-			break;
-		case MOUSE_OUT:
-			g_instructionOutTexture.render(m_point.x, m_point.y);
-			break;
-		}
-		break;
 	case QUIT:
 		switch (m_state)
 		{

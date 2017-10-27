@@ -16,9 +16,16 @@ apocalypsenow::Player::Player()
 	m_isAlive = true;
 
 	m_direction = Direction::RIGHT;
+
+	m_keys = 0;
+	m_win = false;
 }
 apocalypsenow::Player::Player(int t_x, int t_y)
 {
+
+	m_keys = 0;
+	m_win = false;
+	
 	m_box.x = t_x;
 	m_box.y = t_y;
 	m_box.h = PLAYER_HEIGHT -15;
@@ -170,6 +177,17 @@ void apocalypsenow::Player::move(Tile* tiles[])
 	{
 		m_box.x -= m_velX;
 	}
+	// if the character reaches the exit.
+	else if (touchesTrapdoor(tiles))
+	{
+		// and he even has all the keys to make it through
+		if (m_keys == KEY_COUNT)
+		{
+			// Game win condition.
+			m_win = true;
+			
+		}
+	}
 
 
 	// if the character moves up and down
@@ -197,8 +215,17 @@ void apocalypsenow::Player::move(Tile* tiles[])
 	{
 		m_box.y -= m_velY;
 	}
+	// if the character reaches the exit.
+	else if (touchesTrapdoor(tiles))
+	{
+		// and he even has all the keys to make it through
+		if (m_keys == KEY_COUNT)
+		{
+			// Game win condition.
+			m_win = true;
 
-
+		}
+	}
 
 }
 
@@ -243,3 +270,19 @@ void apocalypsenow::Player::setCamera(SDL_Rect& camera)
 	}
 }
 
+bool apocalypsenow::Player::touchesTrapdoor(Tile ** tiles)
+{
+	// go though each tile
+	for (auto i = 0; i < TILE_TOTAL; i++)
+	{
+		if (tiles[i]->getType() == TILE_EXIT)
+		{
+			if (collision(tiles[i]->getBox()))
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}

@@ -5,7 +5,7 @@
 
 namespace apocalypsenow {
 
-	const int ZOMBIE_MAX = 50;
+	const int ZOMBIE_MAX = 100;
 
 	const int FRAME_TIME = 50;
 

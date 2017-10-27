@@ -9,10 +9,6 @@ namespace apocalypsenow {
 	extern Texture g_playHoverTexture;
 	extern Texture g_playDownTexture;
 
-	extern Texture g_instructionOutTexture;
-	extern Texture g_instructionHoverTexture;
-	extern Texture g_instructionDownTexture;
-
 	extern Texture g_quitOutTexture;
 	extern Texture g_quitHoverTexture;
 	extern Texture g_quitDownTexture;
